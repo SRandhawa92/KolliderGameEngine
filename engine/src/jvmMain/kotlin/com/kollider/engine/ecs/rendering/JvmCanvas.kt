@@ -1,35 +1,45 @@
 package com.kollider.engine.ecs.rendering
 
 import com.kollider.engine.core.GameConfig
+import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.image.BufferedImage
 import javax.swing.JPanel
+import javax.swing.SwingUtilities
 
 actual fun createCanvas(config: GameConfig): Canvas {
-    return JvmCanvas(config.height, config.width)
+    return JvmCanvas(config.width, config.height)
 }
 
 class JvmCanvas(
-    override val canvasHeight: Int,
-    override val canvasWidth: Int
+    override val canvasWidth: Int,
+    override val canvasHeight: Int
 ) : JPanel(), Canvas {
 
     /** The latest rendered frame. */
     private var frameBuffer: BufferedImage? = null
 
+    init {
+        preferredSize = Dimension(canvasWidth, canvasHeight)
+        isDoubleBuffered = true
+    }
+
     override fun paint() {
-        paintComponents(this.graphics)
+        if (SwingUtilities.isEventDispatchThread()) {
+            repaint()
+        } else {
+            SwingUtilities.invokeLater { repaint() }
+        }
     }
 
     override fun paintComponent(g: Graphics?) {
         super.paintComponent(g)
-        if (frameBuffer != null) {
-            g?.drawImage(frameBuffer, 0, 0, null)
-        }
-        repaint()
+        val buffer = frameBuffer ?: return
+        g?.drawImage(buffer, 0, 0, null)
     }
 
-    fun setFrameBuffer(buffer: BufferedImage) {
+    fun presentFrame(buffer: BufferedImage) {
         frameBuffer = buffer
+        repaint()
     }
 }

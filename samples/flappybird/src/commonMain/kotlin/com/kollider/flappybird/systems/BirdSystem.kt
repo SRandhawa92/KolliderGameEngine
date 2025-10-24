@@ -24,14 +24,13 @@ fun World.birdSystem(
     config: GameConfig,
     state: FlappyBirdGameState,
 ) {
-    addSystem(BirdSystem(jumpSpeed, gravity, config, this, state))
+    addSystem(BirdSystem(jumpSpeed, gravity, config, state))
 }
 
 class BirdSystem(
     private val jumpSpeed: Float,
     private val gravity: Float,
     private val config: GameConfig,
-    override val world: World,
     private val state: FlappyBirdGameState,
 ): System() {
     private lateinit var birdView: EntityView
@@ -42,10 +41,11 @@ class BirdSystem(
         obstacleView = world.view(ObstacleComponent::class)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     override fun update(entities: List<Entity>, deltaTime: Float) {
         if (!state.isRunning) {
             if (state.tickRestart(deltaTime)) {
-                restartRun(entities)
+                restartRun()
             }
             return
         }
@@ -80,11 +80,11 @@ class BirdSystem(
 
         if (hitObstacle) {
             state.enterGameOver()
-            freezeWorld(entities)
+            freezeWorld()
         }
     }
 
-    private fun freezeWorld(entities: List<Entity>) {
+    private fun freezeWorld() {
         obstacleView.forEach { obstacle ->
             obstacle.get(Velocity::class)?.apply {
                 vx = 0f
@@ -100,13 +100,14 @@ class BirdSystem(
         }
     }
 
-    private fun restartRun(entities: List<Entity>) {
+    private fun restartRun() {
         // Remove existing obstacles.
-        obstacleView.toList().forEach { world.removeEntity(it) }
+        val gameWorld = world
+        obstacleView.toList().forEach { gameWorld.removeEntity(it) }
 
         val bird = birdView.toList().firstOrNull()
         if (bird == null) {
-            world.bird(config)
+            gameWorld.bird(config)
             state.markRestarted()
             return
         }

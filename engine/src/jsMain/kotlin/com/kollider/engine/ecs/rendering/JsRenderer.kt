@@ -12,7 +12,13 @@ class JsRenderer: Renderer {
         // Clear the frame on JS
     }
 
-    override fun drawSprite(spriteAsset: SpriteAsset, x: Float, y: Float) {
+    override fun drawSprite(
+        spriteAsset: SpriteAsset,
+        width: Float,
+        height: Float,
+        x: Float,
+        y: Float
+    ) {
         // Draw the spriteAsset on JS
     }
 

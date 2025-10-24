@@ -47,7 +47,7 @@ class Entity(val id: Int) {
      * Checks if the entity has a specific component.
      */
     fun has(componentClass: KClass<out Component>): Boolean {
-        return components.containsKey(componentClass)
+        return components.values.any { componentClass.isInstance(it) }
     }
 
     internal fun bindObserver(observer: ComponentObserver) {

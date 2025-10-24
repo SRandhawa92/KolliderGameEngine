@@ -3,6 +3,7 @@ package com.kollider.engine.ecs.rendering
 import com.kollider.engine.ecs.input.InputHandler
 import com.kollider.engine.ecs.input.JvmInputHandler
 import java.awt.Color
+import java.awt.Dimension
 import java.awt.Font
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
@@ -31,6 +32,7 @@ class JvmRenderer(private val canvas: JvmCanvas): Renderer {
     override fun resize(width: Int, height: Int) {
         buffer = BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
         g2d = buffer.createGraphics()
+        updateCanvasSize(width, height)
     }
 
     override fun dispose() {
@@ -64,13 +66,16 @@ class JvmRenderer(private val canvas: JvmCanvas): Renderer {
     }
 
     override fun present() {
-        canvas.setFrameBuffer(buffer)
-        canvas.paint()
+        if (SwingUtilities.isEventDispatchThread()) {
+            canvas.presentFrame(buffer)
+        } else {
+            SwingUtilities.invokeLater { canvas.presentFrame(buffer) }
+        }
     }
 
     override fun clear() {
         g2d.color = Color.BLACK
-        g2d.fillRect(0, 0, canvas.canvasWidth, canvas.canvasHeight)
+        g2d.fillRect(0, 0, buffer.width, buffer.height)
     }
 
     override fun drawCircle(x: Float, y: Float, radius: Float, color: Int) {
@@ -79,5 +84,17 @@ class JvmRenderer(private val canvas: JvmCanvas): Renderer {
         val topLeftY = (y - radius).toInt()
         val diameter = (radius * 2).toInt()
         g2d.fillOval(topLeftX, topLeftY, diameter, diameter)
+    }
+
+    private fun updateCanvasSize(width: Int, height: Int) {
+        if (SwingUtilities.isEventDispatchThread()) {
+            canvas.preferredSize = Dimension(width, height)
+            canvas.revalidate()
+        } else {
+            SwingUtilities.invokeLater {
+                canvas.preferredSize = Dimension(width, height)
+                canvas.revalidate()
+            }
+        }
     }
 }

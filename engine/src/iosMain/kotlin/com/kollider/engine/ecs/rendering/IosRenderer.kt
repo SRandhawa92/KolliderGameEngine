@@ -12,6 +12,16 @@ class IosRenderer: Renderer {
         // Clear the frame on iOS
     }
 
+    override fun drawSprite(
+        spriteAsset: SpriteAsset,
+        width: Float,
+        height: Float,
+        x: Float,
+        y: Float
+    ) {
+        // Draw the spriteAsset on iOS
+    }
+
     override fun present() {
         // Present the frame on iOS
     }
@@ -22,10 +32,6 @@ class IosRenderer: Renderer {
 
     override fun dispose() {
         // Dispose of any resources used by the renderer on iOS
-    }
-
-    override fun drawSprite(spriteAsset: SpriteAsset, x: Float, y: Float) {
-        // Draw the spriteAsset on iOS
     }
 
     override fun drawText(text: String, x: Float, y: Float, size: Float, color: Int) {

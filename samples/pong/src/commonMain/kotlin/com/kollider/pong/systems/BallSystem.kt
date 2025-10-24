@@ -1,6 +1,7 @@
 package com.kollider.pong.systems
 
 import com.kollider.engine.ecs.Entity
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.physics.Collider
@@ -8,6 +9,7 @@ import com.kollider.engine.ecs.physics.CollisionType
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.pong.components.BallComponent
+import com.kollider.engine.ecs.require
 import kotlin.math.abs
 import kotlin.math.sqrt
 
@@ -50,18 +52,26 @@ class BallSystem(
     private val maxSpeed: Float = 560f,
     private val hitSpeedIncrement: Float = 12f
 ) : System() {
+    private lateinit var ballView: EntityView
 
     // toggles to make serves deterministic without RNG
     private var serveRightNext = true
 
-    override fun update(entities: List<Entity>, deltaTime: Float) {
-        val balls = entities.asSequence().filter { it.has(BallComponent::class) }.toList()
-        if (balls.isEmpty()) return
+    override fun onAttach(world: World) {
+        ballView = world.view(
+            BallComponent::class,
+            Position::class,
+            Velocity::class,
+            Collider::class,
+        )
+    }
 
-        for (ball in balls) {
-            val pos = ball.get(Position::class) ?: continue
-            val vel = ball.get(Velocity::class) ?: continue
-            val col = ball.get(Collider::class) ?: continue
+    @Suppress("UNUSED_PARAMETER")
+    override fun update(entities: List<Entity>, deltaTime: Float) {
+        for (ball in ballView) {
+            val pos = ball.require<Position>()
+            val vel = ball.require<Velocity>()
+            val col = ball.require<Collider>()
 
             var flippedX = false
             var scoredTop = false

@@ -83,8 +83,10 @@ class World : Entity.ComponentObserver {
         // Apply any pending system removals.
         if (pendingSystemRemovals.isNotEmpty()) {
             pendingSystemRemovals.forEach { system ->
-                systems.remove(system)
-                system.unbindWorld()
+                if (systems.remove(system)) {
+                    system.dispose()
+                    system.unbindWorld()
+                }
             }
             pendingSystemRemovals.clear()
         }

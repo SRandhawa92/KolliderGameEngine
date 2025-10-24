@@ -28,37 +28,38 @@ class PlayerPaddleSystem(
         playerView = world.view(PlayerPaddleComponent::class, InputComponent::class)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     override fun update(entities: List<Entity>, deltaTime: Float) {
         // Process each entity that has an InputComponent and a PlayerPaddleComponent.
-        playerView.forEach { entity ->
-                val input = entity.require<InputComponent>()
-                val velocity = entity.require<Velocity>()
-                val collider = entity.require<Collider>()
+        for (entity in playerView) {
+            val input = entity.require<InputComponent>()
+            val velocity = entity.require<Velocity>()
+            val collider = entity.require<Collider>()
 
-                // Handle paddle movement based on input.
-                velocity.vx = when {
-                    input.movement.x < 0 -> -paddleSpeed
-                    input.movement.x > 0 -> paddleSpeed
-                    else -> 0f
-                }
+            // Handle paddle movement based on input.
+            velocity.vx = when {
+                input.movement.x < 0 -> -paddleSpeed
+                input.movement.x > 0 -> paddleSpeed
+                else -> 0f
+            }
 
-                // Handle collisions.
-                val iterator = collider.collisions.iterator()
-                while (iterator.hasNext()) {
-                    val collision = iterator.next()
-                    when (collision.type) {
-                        // Stop paddle from moving out of bounds. Push it back in.
-                        CollisionType.BOUNDARY_LEFT -> {
-                            velocity.vx = paddleSpeed
-                            iterator.remove()
-                        }
-                        CollisionType.BOUNDARY_RIGHT -> {
-                            velocity.vx = -paddleSpeed
-                            iterator.remove()
-                        }
-                        else -> {}
+            // Handle collisions.
+            val iterator = collider.collisions.iterator()
+            while (iterator.hasNext()) {
+                val collision = iterator.next()
+                when (collision.type) {
+                    // Stop paddle from moving out of bounds. Push it back in.
+                    CollisionType.BOUNDARY_LEFT -> {
+                        velocity.vx = paddleSpeed
+                        iterator.remove()
                     }
+                    CollisionType.BOUNDARY_RIGHT -> {
+                        velocity.vx = -paddleSpeed
+                        iterator.remove()
+                    }
+                    else -> {}
                 }
             }
+        }
     }
 }

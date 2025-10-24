@@ -18,14 +18,13 @@ fun World.obstacleSystem(
     config: GameConfig,
     state: FlappyBirdGameState,
 ) {
-    addSystem(ObstacleSystem(speed, spawnIntervalSeconds, gapPadding, this, config, state))
+    addSystem(ObstacleSystem(speed, spawnIntervalSeconds, gapPadding, config, state))
 }
 
 class ObstacleSystem(
     private val speed: Float,
     private val spawnIntervalSeconds: Float,
     private val gapPadding: Float,
-    override val world: World,
     private val config: GameConfig,
     private val state: FlappyBirdGameState,
 ): System() {
@@ -36,6 +35,7 @@ class ObstacleSystem(
         obstacleView = world.view(ObstacleComponent::class)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     override fun update(entities: List<Entity>, deltaTime: Float) {
         if (!state.isRunning) {
             timeSinceLastObstacle = 0f
@@ -45,16 +45,17 @@ class ObstacleSystem(
         timeSinceLastObstacle += deltaTime
 
         // Spawn new obstacles and remove old ones that are out of the screen
+        val gameWorld = world
         obstacleView.forEach { obstacle ->
             val position = obstacle.require<Position>()
 
             // Remove obstacle if it's out of the screen
-            if (position.x < -50) world.removeEntity(obstacle)
+            if (position.x < -50) gameWorld.removeEntity(obstacle)
         }
 
         // Spawn new obstacle every interval
         if (timeSinceLastObstacle >= spawnIntervalSeconds) {
-            world.obstacle(speed, config, gapPadding)
+            gameWorld.obstacle(speed, config, gapPadding)
             timeSinceLastObstacle = 0f
         }
     }

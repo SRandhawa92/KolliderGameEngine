@@ -1,19 +1,27 @@
 package com.kollider.engine.ecs.rendering
 
 import com.kollider.engine.ecs.Entity
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
+import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.physics.Position
 
 /**
  * The RenderSystem is responsible for drawing all entities that have rendering data.
  */
 class RenderSystem(private val renderer: Renderer) : System() {
+    private lateinit var renderView: EntityView
+
+    override fun onAttach(world: World) {
+        renderView = world.view(Position::class, Drawable::class)
+    }
+
     override fun update(entities: List<Entity>, deltaTime: Float) {
         // Clear the screen.
         renderer.clear()
 
         // Iterate over all entities with both Position and Renderable components.
-        entities.forEach { entity ->
+        renderView.forEach { entity ->
             val position = entity.get(Position::class)
             val drawable = entity.get(Drawable::class)
             if (position != null && drawable != null) {
