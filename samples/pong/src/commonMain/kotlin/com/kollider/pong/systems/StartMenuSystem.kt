@@ -23,8 +23,8 @@ class StartMenuSystem(
         // If user clicked the start button, load the Pong level.
         if (!startClicked) {
             // Find entity with StartButtonComponent, check if it's clicked.
-            val startButton = entities.find { it.has(StartButtonComponent::class) }!!
-            val startInput = startButton.get(InputComponent::class)!!
+            val startButton = entities.find { it.has(StartButtonComponent::class) } ?: return
+            val startInput = startButton.get(InputComponent::class) ?: return
 
             if (startInput.shoot) {
                 startClicked = true

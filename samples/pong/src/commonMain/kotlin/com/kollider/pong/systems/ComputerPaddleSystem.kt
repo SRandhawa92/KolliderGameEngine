@@ -20,8 +20,8 @@ class ComputerPaddleSystem(
 ) : System() {
     override fun update(entities: List<Entity>, deltaTime: Float) {
         // Locate the ball entity.
-        val ball = entities.firstOrNull { it.has(BallComponent::class) }!!
-        val ballPos = ball.get(Position::class)!!
+        val ball = entities.firstOrNull { it.has(BallComponent::class) } ?: return
+        val ballPos = ball.get(Position::class) ?: return
 
         // For every AI-controlled paddle, adjust the velocity based on the ball's vertical position.
         entities.filter { it.has(ComputerPaddleComponent::class) }

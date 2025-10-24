@@ -7,6 +7,8 @@ import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.CollisionType
 import com.kollider.engine.ecs.physics.Velocity
+import com.kollider.engine.ecs.require
+import com.kollider.engine.ecs.withAll
 import com.kollider.pong.components.PlayerPaddleComponent
 
 fun World.playerPaddleSystem(paddleSpeed: Float) {
@@ -22,11 +24,11 @@ class PlayerPaddleSystem(
 ) : System() {
     override fun update(entities: List<Entity>, deltaTime: Float) {
         // Process each entity that has an InputComponent and a PlayerPaddleComponent.
-        entities.filter { it.has(PlayerPaddleComponent::class) && it.has(InputComponent::class) }
+        entities.withAll(PlayerPaddleComponent::class, InputComponent::class)
             .forEach { entity ->
-                val input = entity.get(InputComponent::class)!!
-                val velocity = entity.get(Velocity::class)!!
-                val collider = entity.get(Collider::class)!!
+                val input = entity.require<InputComponent>()
+                val velocity = entity.require<Velocity>()
+                val collider = entity.require<Collider>()
 
                 // Handle paddle movement based on input.
                 velocity.vx = when {
