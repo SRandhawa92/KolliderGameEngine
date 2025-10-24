@@ -23,8 +23,10 @@ class RenderSystem(private val renderer: Renderer) : System() {
                     is Drawable.Sprite -> {
                         renderer.drawSprite(
                             drawable.spriteAsset,
+                            drawable.width,
+                            drawable.height,
                             position.x + drawable.offsetX,
-                            position.y + drawable.offsetY
+                            position.y + drawable.offsetY,
                         )
                     }
 

@@ -1,5 +1,6 @@
 package com.kollider.engine.ecs.rendering
 
+import android.graphics.Bitmap.createBitmap
 import android.graphics.Paint
 import android.graphics.Rect
 import com.kollider.engine.ecs.input.AndroidInputHandler
@@ -17,12 +18,7 @@ class AndroidRenderer(private val canvas: AndroidCanvas): Renderer {
         activity.setContentView(canvas)
 
     }
-    private var buffer: android.graphics.Bitmap =
-        android.graphics.Bitmap.createBitmap(
-            canvas.canvasWidth,
-            canvas.canvasHeight,
-            android.graphics.Bitmap.Config.ARGB_8888
-        )
+    private var buffer = createBitmap(canvas.canvasWidth, canvas.canvasHeight, android.graphics.Bitmap.Config.ARGB_8888)
 
     private var graphics = android.graphics.Canvas(buffer)
 
@@ -30,8 +26,19 @@ class AndroidRenderer(private val canvas: AndroidCanvas): Renderer {
         graphics.drawColor(android.graphics.Color.BLACK)
     }
 
-    override fun drawSprite(spriteAsset: SpriteAsset, x: Float, y: Float) {
-        // Draw the spriteAsset on Android
+    override fun drawSprite(spriteAsset: SpriteAsset, width: Float, height: Float, x: Float, y: Float) {
+        val bitmap = spriteAsset.image as? android.graphics.Bitmap ?: return
+
+        if (!spriteAsset.frames.isNullOrEmpty()) {
+            val frames = spriteAsset.frames!!
+            val timeMs = System.currentTimeMillis()
+            val frameDurationMs = spriteAsset.frameDurationMs ?: 100L
+            val frameIndex = ((timeMs / frameDurationMs) % frames.size).toInt()
+            val frame = frames[frameIndex] as? android.graphics.Bitmap ?: return
+            graphics.drawBitmap(frame, null, Rect(x.toInt(), y.toInt(), (x + width).toInt(), (y + height).toInt()), null)
+        } else {
+            graphics.drawBitmap(bitmap, null, Rect(x.toInt(), y.toInt(), (x + width).toInt(), (y + height).toInt()), null)
+        }
     }
 
     override fun drawText(text: String, x: Float, y: Float, size: Float, color: Int) {
@@ -59,7 +66,7 @@ class AndroidRenderer(private val canvas: AndroidCanvas): Renderer {
     }
 
     override fun resize(width: Int, height: Int) {
-        buffer = android.graphics.Bitmap.createBitmap(width, height, android.graphics.Bitmap.Config.ARGB_8888)
+        buffer = createBitmap(width, height, android.graphics.Bitmap.Config.ARGB_8888)
         graphics = android.graphics.Canvas(buffer)
     }
 

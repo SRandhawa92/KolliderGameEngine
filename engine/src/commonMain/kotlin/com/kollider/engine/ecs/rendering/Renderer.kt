@@ -9,7 +9,7 @@ interface Renderer {
     fun clear()
 
     /** Draws a spriteAsset at the given coordinates. */
-    fun drawSprite(spriteAsset: SpriteAsset, x: Float, y: Float)
+    fun drawSprite(spriteAsset: SpriteAsset, width: Float, height: Float, x: Float, y: Float)
 
     /** Draws text at the specified position with the given size and color. */
     fun drawText(text: String, x: Float, y: Float, size: Float, color: Int)

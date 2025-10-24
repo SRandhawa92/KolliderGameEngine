@@ -37,9 +37,19 @@ class JvmRenderer(private val canvas: JvmCanvas): Renderer {
         g2d.dispose()
     }
 
-    override fun drawSprite(spriteAsset: SpriteAsset, x: Float, y: Float) {
+    override fun drawSprite(spriteAsset: SpriteAsset, width: Float, height: Float,  x: Float, y: Float) {
         val img = spriteAsset.image as? BufferedImage ?: return
-        g2d.drawImage(img, x.toInt(), y.toInt(), null)
+
+        if (!spriteAsset.frames.isNullOrEmpty()) {
+            val frames = spriteAsset.frames!!
+            val timeMs = System.currentTimeMillis()
+            val frameDurationMs = spriteAsset.frameDurationMs ?: 100L
+            val frameIndex = ((timeMs / frameDurationMs) % frames.size).toInt()
+            val frame = frames[frameIndex] as? BufferedImage ?: return
+            g2d.drawImage(frame, x.toInt(), y.toInt(), width.toInt(), height.toInt(), null)
+        } else {
+            g2d.drawImage(img, x.toInt(), y.toInt(), width.toInt(), height.toInt(), null)
+        }
     }
 
     override fun drawText(text: String, x: Float, y: Float, size: Float, color: Int) {

@@ -7,9 +7,18 @@ import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.engine.ecs.rendering.Drawable
+import com.kollider.engine.ecs.rendering.UrlSpriteSheetAsset
 import com.kollider.flappybird.components.BirdComponent
 
 fun World.bird(config: GameConfig) {
+
+    val birdSprite = UrlSpriteSheetAsset(
+        name = "birdSprite",
+        imageUrl = "https://www.pikpng.com/pngl/b/305-3050375_this-free-icons-png-design-of-flying-game.png",
+        rows = 2,
+        cols = 4
+    )
+
     createEntity().apply {
         // Marker Bird Component
         add(BirdComponent())
@@ -24,7 +33,13 @@ fun World.bird(config: GameConfig) {
         add(Collider(width = 50f, height = 50f))
 
         // Drawable Component - bird should have a drawable
-         add(Drawable.Circle(10f, 0xFFFFFFFF.toInt()))
+         add(Drawable.Sprite(
+             spriteAsset = birdSprite,
+             width = 50f,
+             height = 50f,
+             offsetX = 0f,
+             offsetY = 0f
+         ))
 
         // Input Component - bird should have an input component
          add(InputComponent())
