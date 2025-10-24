@@ -9,7 +9,7 @@ Kollider is a lightweight, Kotlin Multiplatform (KMP) engine for building 2D gam
 
 Looking for in-depth docs, code samples, and feature walkthroughs? Check out the full guide:
 
-- [`docs/ENGINE_GUIDE.md`](docs/ENGINE_GUIDE.md)
+- [`docs/ENGINE_GUIDE.md`](docs/index.md)
 
 ## Quick Start
 
