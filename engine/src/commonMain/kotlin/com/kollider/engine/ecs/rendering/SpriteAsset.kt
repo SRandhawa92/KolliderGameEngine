@@ -19,7 +19,7 @@ abstract class SpriteAsset {
     /**
      * Optional list of sub-sprites if this is a sprite sheet.
      */
-    open val frames: List<Any>? = null
+    open var frames: List<Any>? = null
     open val frameDurationMs: Long? = null
 }
 
@@ -32,13 +32,12 @@ class UrlSpriteSheetAsset(
     cols: Int? = null,
 ) : SpriteAsset() {
     override var image: Any? = null
-    override val frames: List<Any>? by lazy {
-        getFrameFromSpriteSheet(image, rows, cols)
-    }
+    override var frames: List<Any>? = null
 
     init {
         scope.launch(dispatcher) {
             image = loadImageFromUrl(imageUrl)
+            frames = getFrameFromSpriteSheet(image, rows, cols)
         }
     }
 }
