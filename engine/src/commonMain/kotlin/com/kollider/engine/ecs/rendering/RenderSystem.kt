@@ -43,48 +43,7 @@ class RenderSystem(private val renderer: Renderer) : System() {
             val position = entity.get(Position::class)
             val drawable = entity.get(Drawable::class)
             if (position != null && drawable != null) {
-
-                // Draw the entity based on its drawable component.
-                when (drawable) {
-                    is Drawable.Sprite -> {
-                        renderer.drawSprite(
-                            drawable.spriteAsset,
-                            drawable.width,
-                            drawable.height,
-                            position.x + drawable.offsetX,
-                            position.y + drawable.offsetY,
-                        )
-                    }
-
-                    is Drawable.Rect -> {
-                        renderer.drawRect(
-                            position.x + drawable.offsetX,
-                            position.y + drawable.offsetY,
-                            drawable.width,
-                            drawable.height,
-                            drawable.color
-                        )
-                    }
-
-                    is Drawable.Circle -> {
-                        renderer.drawCircle(
-                            position.x + drawable.offsetX,
-                            position.y + drawable.offsetY,
-                            drawable.radius,
-                            drawable.color
-                        )
-                    }
-
-                    is Drawable.Text -> {
-                        renderer.drawText(
-                            drawable.text,
-                            position.x + drawable.offsetX,
-                            position.y + drawable.offsetY,
-                            drawable.size,
-                            drawable.color
-                        )
-                    }
-                }
+                renderDrawable(drawable, position.x, position.y)
             }
         }
 
@@ -108,5 +67,56 @@ class RenderSystem(private val renderer: Renderer) : System() {
      */
     override fun resize(width: Int, height: Int) {
         renderer.resize(width, height)
+    }
+
+    private fun renderDrawable(drawable: Drawable, baseX: Float, baseY: Float) {
+        when (drawable) {
+            is Drawable.Sprite -> {
+                renderer.drawSprite(
+                    drawable.spriteAsset,
+                    drawable.width,
+                    drawable.height,
+                    baseX + drawable.offsetX,
+                    baseY + drawable.offsetY,
+                )
+            }
+
+            is Drawable.Rect -> {
+                renderer.drawRect(
+                    baseX + drawable.offsetX,
+                    baseY + drawable.offsetY,
+                    drawable.width,
+                    drawable.height,
+                    drawable.color
+                )
+            }
+
+            is Drawable.Circle -> {
+                renderer.drawCircle(
+                    baseX + drawable.offsetX,
+                    baseY + drawable.offsetY,
+                    drawable.radius,
+                    drawable.color
+                )
+            }
+
+            is Drawable.Text -> {
+                renderer.drawText(
+                    drawable.text,
+                    baseX + drawable.offsetX,
+                    baseY + drawable.offsetY,
+                    drawable.size,
+                    drawable.color
+                )
+            }
+
+            is Drawable.Composite -> {
+                val compositeBaseX = baseX + drawable.offsetX
+                val compositeBaseY = baseY + drawable.offsetY
+                drawable.elements.forEach { child ->
+                    renderDrawable(child, compositeBaseX, compositeBaseY)
+                }
+            }
+        }
     }
 }

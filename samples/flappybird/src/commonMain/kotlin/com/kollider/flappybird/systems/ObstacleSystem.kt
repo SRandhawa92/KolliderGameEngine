@@ -19,15 +19,18 @@ fun SceneScope.obstacleSystem(
     config: GameConfig,
     state: FlappyBirdGameState,
 ) {
-    addSystem(ObstacleSystem(speed, spawnIntervalSeconds, gapPadding, config, state))
+    addSystem(
+        ObstacleSystem(
+            spawnIntervalSeconds,
+            state,
+        ) { obstacle(speed, config, gapPadding) }
+    )
 }
 
 class ObstacleSystem(
-    private val speed: Float,
     private val spawnIntervalSeconds: Float,
-    private val gapPadding: Float,
-    private val config: GameConfig,
     private val state: FlappyBirdGameState,
+    private val spawnObstacle: () -> Entity,
 ): System() {
     private var timeSinceLastObstacle = 0f
     private lateinit var obstacleView: EntityView
@@ -56,7 +59,7 @@ class ObstacleSystem(
 
         // Spawn new obstacle every interval
         if (timeSinceLastObstacle >= spawnIntervalSeconds) {
-            gameWorld.obstacle(speed, config, gapPadding)
+            spawnObstacle()
             timeSinceLastObstacle = 0f
         }
     }

@@ -264,6 +264,11 @@ $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Circle/color/#/Pointi
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Circle/offsetX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-circle/offset-x.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Circle/offsetY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-circle/offset-y.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Circle/radius/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-circle/radius.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/index.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/Composite/#kotlin.collections.List[com.kollider.engine.ecs.rendering.Drawable]#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/-composite.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/elements/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/elements.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/offsetX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/offset-x.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/offsetY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/offset-y.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Rect///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-rect/index.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Rect/Rect/#kotlin.Float#kotlin.Float#kotlin.Int#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-rect/-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Rect/bottom/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-rect/bottom.html

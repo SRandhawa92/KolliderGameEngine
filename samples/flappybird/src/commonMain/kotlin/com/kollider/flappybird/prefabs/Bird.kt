@@ -4,7 +4,6 @@ import com.kollider.engine.assets.onReady
 import com.kollider.engine.core.GameConfig
 import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
-import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.input.Shoot
 import com.kollider.engine.ecs.physics.Collider
@@ -16,16 +15,7 @@ import com.kollider.flappybird.components.BirdComponent
 
 private const val BIRD_SPRITE_URL = "https://www.pikpng.com/pngl/b/305-3050375_this-free-icons-png-design-of-flying-game.png"
 
-fun SceneScope.bird(config: GameConfig) {
-    val bird = createBirdEntity(worldRef, config)
-    track(bird)
-}
-
-fun World.bird(config: GameConfig) {
-    createBirdEntity(this, config)
-}
-
-private fun createBirdEntity(world: World, config: GameConfig): Entity {
+fun SceneScope.bird(config: GameConfig): Entity {
     val birdSprite = UrlSpriteSheetAsset(
         name = "birdSprite",
         config = config,
@@ -34,17 +24,18 @@ private fun createBirdEntity(world: World, config: GameConfig): Entity {
         cols = 4
     )
 
-    val bird = world.createEntity()
-
-    bird.add(BirdComponent())
-    bird.add(Position(100f, config.height / 2f))
-    bird.add(Velocity(0f, 0f))
-    bird.add(Collider(width = 50f, height = 50f))
     val placeholder = Drawable.Rect(50f, 50f, 0xFFFFFFFF.toInt())
-    bird.add(placeholder)
-    bird.add(InputComponent().apply {
-        bindAction(Shoot)
-    })
+
+    val bird = createEntity {
+        add(BirdComponent())
+        add(Position(100f, config.height / 2f))
+        add(Velocity(0f, 0f))
+        add(Collider(width = 50f, height = 50f))
+        add(placeholder)
+        add(InputComponent().apply {
+            bindAction(Shoot)
+        })
+    }
 
     config.inputRouter.routeAction(Shoot, bird.id)
     config.inputRouter.routeMovement(bird.id)

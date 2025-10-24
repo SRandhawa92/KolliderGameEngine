@@ -18,6 +18,7 @@ import com.kollider.flappybird.components.ObstacleComponent
 import com.kollider.flappybird.prefabs.bird
 
 private const val BIRD_START_X = 100f
+private const val BIRD_SIZE = 50f
 
 fun SceneScope.birdSystem(
     jumpSpeed: Float,
@@ -25,7 +26,7 @@ fun SceneScope.birdSystem(
     config: GameConfig,
     state: FlappyBirdGameState,
 ) {
-    addSystem(BirdSystem(jumpSpeed, gravity, config, state))
+    addSystem(BirdSystem(jumpSpeed, gravity, config, state) { bird(config) })
 }
 
 class BirdSystem(
@@ -33,6 +34,7 @@ class BirdSystem(
     private val gravity: Float,
     private val config: GameConfig,
     private val state: FlappyBirdGameState,
+    private val spawnBird: () -> Entity,
 ): System() {
     private lateinit var birdView: EntityView
     private lateinit var obstacleView: EntityView
@@ -57,6 +59,7 @@ class BirdSystem(
             val velocity = bird.require<Velocity>()
             val input = bird.require<InputComponent>()
             val collider = bird.require<Collider>()
+            val position = bird.require<Position>()
 
             // Apply jump
             if (input.shoot) {
@@ -76,6 +79,17 @@ class BirdSystem(
                     }
                     else -> {}
                 }
+            }
+
+            // Clamp bird within vertical bounds of the screen.
+            if (position.y < 0f) {
+                position.y = 0f
+                if (velocity.vy < 0f) velocity.vy = 0f
+            }
+            val maxY = (config.height.toFloat() - BIRD_SIZE).coerceAtLeast(0f)
+            if (position.y > maxY) {
+                position.y = maxY
+                if (velocity.vy > 0f) velocity.vy = 0f
             }
         }
 
@@ -108,7 +122,7 @@ class BirdSystem(
 
         val bird = birdView.toList().firstOrNull()
         if (bird == null) {
-            gameWorld.bird(config)
+            spawnBird()
             state.markRestarted()
             return
         }

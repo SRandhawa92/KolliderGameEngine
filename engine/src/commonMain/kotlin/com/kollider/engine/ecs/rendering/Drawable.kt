@@ -81,4 +81,15 @@ sealed class Drawable: Component() {
         val offsetX: Float = 0f,
         val offsetY: Float = 0f
     ) : Drawable()
+
+    /**
+     * Groups multiple drawables so they render as a single logical unit.
+     *
+     * Child offsets are relative to this composite's offset.
+     */
+    data class Composite(
+        val elements: List<Drawable>,
+        val offsetX: Float = 0f,
+        val offsetY: Float = 0f,
+    ) : Drawable()
 }
