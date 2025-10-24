@@ -6,6 +6,7 @@ import com.kollider.engine.ecs.physics.Vector2
 expect fun createInputHandler(config: GameConfig): InputHandler
 
 interface InputHandler {
+    val dispatcher: InputDispatcher
     fun isActionActive(action: Action): Boolean
     fun getMovement(): Vector2
 }

@@ -8,6 +8,8 @@ actual fun createInputHandler(config: GameConfig): InputHandler {
 }
 
 class IosInputHandler: InputHandler {
+    override val dispatcher: InputDispatcher = InputDispatcher()
+
     override fun isActionActive(action: Action): Boolean {
         return false
     }

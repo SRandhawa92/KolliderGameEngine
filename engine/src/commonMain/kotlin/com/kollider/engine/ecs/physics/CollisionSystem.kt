@@ -1,10 +1,26 @@
 package com.kollider.engine.ecs.physics
 
+import com.kollider.engine.core.WorldBounds
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.rendering.Drawable
 
-class CollisionSystem(private val worldBounds: Drawable.Rect) : System() {
+class CollisionSystem(private val worldBounds: WorldBounds) : System() {
+
+    @Deprecated(
+        message = "Use CollisionSystem(WorldBounds) instead",
+        replaceWith = ReplaceWith(
+            "CollisionSystem(WorldBounds(width = bounds.width, height = bounds.height, originX = bounds.offsetX, originY = bounds.offsetY))"
+        )
+    )
+    constructor(bounds: Drawable.Rect) : this(
+        WorldBounds(
+            width = bounds.width,
+            height = bounds.height,
+            originX = bounds.offsetX,
+            originY = bounds.offsetY,
+        )
+    )
 
     // Simple uniform grid broad-phase (replace with quadtree if you like)
     private val grid = UniformGrid(cellSize = 64f)
@@ -41,12 +57,14 @@ class CollisionSystem(private val worldBounds: Drawable.Rect) : System() {
         collidables.forEach { e ->
             val p = e.get(Position::class) ?: return@forEach
             val c = e.get(Collider::class) ?: return@forEach
-            val right = p.x + c.width
-            val bottom = p.y + c.height
+            val left = p.x
+            val top = p.y
+            val right = left + c.width
+            val bottom = top + c.height
 
-            if (p.x < worldBounds.left)  c.collisions.add(CollisionEvent(CollisionType.BOUNDARY_LEFT))
+            if (left < worldBounds.left)  c.collisions.add(CollisionEvent(CollisionType.BOUNDARY_LEFT))
             if (right > worldBounds.right) c.collisions.add(CollisionEvent(CollisionType.BOUNDARY_RIGHT))
-            if (p.y < worldBounds.top)   c.collisions.add(CollisionEvent(CollisionType.BOUNDARY_TOP))
+            if (top < worldBounds.top)   c.collisions.add(CollisionEvent(CollisionType.BOUNDARY_TOP))
             if (bottom > worldBounds.bottom) c.collisions.add(CollisionEvent(CollisionType.BOUNDARY_BOTTOM))
         }
     }

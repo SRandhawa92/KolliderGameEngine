@@ -4,6 +4,25 @@ package com.kollider.engine.ecs
  * Base class for all systems in the ECS.
  */
 abstract class System {
+    private var worldRef: World? = null
+
+    protected open val world: World
+        get() = worldRef ?: error("System is not attached to a World.")
+
+    internal fun bindWorld(world: World) {
+        worldRef = world
+        onAttach(world)
+    }
+
+    internal fun unbindWorld() {
+        val current = worldRef ?: return
+        onDetach(current)
+        worldRef = null
+    }
+
+    protected open fun onAttach(world: World) {}
+
+    protected open fun onDetach(world: World) {}
 
     /**
      * Updates the system.

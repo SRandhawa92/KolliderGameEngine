@@ -10,6 +10,7 @@ actual fun createInputHandler(config: GameConfig): InputHandler {
 }
 
 class JvmInputHandler: InputHandler, KeyListener {
+    override val dispatcher: InputDispatcher = InputDispatcher()
     // Holds the currently pressed key codes.
     private val activeActions = mutableSetOf<Action>()
     private val pressedKeys = mutableSetOf<Int>()
@@ -43,20 +44,26 @@ class JvmInputHandler: InputHandler, KeyListener {
     override fun keyPressed(event: KeyEvent?) {
         event?.let {
             pressedKeys.add(it.keyCode)
-            activeActions.add(when (it.keyCode) {
+            val action = when (it.keyCode) {
                 KeyEvent.VK_SPACE -> Shoot
                 else -> return
-            })
+            }
+            if (activeActions.add(action)) {
+                dispatcher.emit(action, true)
+            }
         }
     }
 
     override fun keyReleased(event: KeyEvent?) {
         event?.let {
             pressedKeys.remove(it.keyCode)
-            activeActions.remove(when (it.keyCode) {
+            val action = when (it.keyCode) {
                 KeyEvent.VK_SPACE -> Shoot
                 else -> return
-            })
+            }
+            if (activeActions.remove(action)) {
+                dispatcher.emit(action, false)
+            }
         }
     }
 }

@@ -12,7 +12,8 @@ actual fun createInputHandler(config: GameConfig): InputHandler {
 
 class AndroidInputHandler(context: Context) : InputHandler {
 
-    private val gestureControl = GestureControl()
+    override val dispatcher: InputDispatcher = InputDispatcher()
+    private val gestureControl = GestureControl(dispatcher)
     private val gestureDetector = GestureDetector(context, gestureControl)
 
     override fun isActionActive(action: Action): Boolean {
@@ -29,6 +30,5 @@ class AndroidInputHandler(context: Context) : InputHandler {
 
     fun clearActions() {
         gestureControl.reset()
-
     }
 }

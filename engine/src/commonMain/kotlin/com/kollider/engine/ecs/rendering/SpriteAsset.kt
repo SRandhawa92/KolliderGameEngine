@@ -1,5 +1,6 @@
 package com.kollider.engine.ecs.rendering
 
+import com.kollider.engine.assets.AssetHandle
 import com.kollider.engine.core.GameConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,6 +21,7 @@ abstract class SpriteAsset {
      */
     open var frames: List<Any>? = null
     open val frameDurationMs: Long? = null
+    open val handle: AssetHandle<Any>? = null
 }
 
 class UrlSpriteSheetAsset(
@@ -31,12 +33,21 @@ class UrlSpriteSheetAsset(
 ) : SpriteAsset() {
     override var image: Any? = null
     override var frames: List<Any>? = null
+    override val handle: AssetHandle<Any> =
+        config.assets.load(name) {
+            loadImageFromUrl(imageUrl)
+                ?: throw IllegalStateException("Unable to load sprite asset: $imageUrl")
+        }
 
     init {
         config.scope.launch(Dispatchers.Default) {
-            image = loadImageFromUrl(imageUrl)
-            frames = getFrameFromSpriteSheet(image, rows, cols)
+            try {
+                val loaded = handle.awaitReady()
+                image = loaded
+                frames = getFrameFromSpriteSheet(loaded, rows, cols)
+            } catch (_: Throwable) {
+                frames = null
+            }
         }
     }
 }
-

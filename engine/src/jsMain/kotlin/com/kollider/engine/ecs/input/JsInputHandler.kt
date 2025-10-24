@@ -1,20 +1,16 @@
 package com.kollider.engine.ecs.input
 
 import com.kollider.engine.core.GameConfig
-
+import com.kollider.engine.ecs.physics.Vector2
 
 actual fun createInputHandler(config: GameConfig): InputHandler {
     return JsInputHandler()
 }
 
+class JsInputHandler : InputHandler {
+    override val dispatcher: InputDispatcher = InputDispatcher()
 
-class JsInputHandler: InputHandler {
-    override fun pollInputs() {
-        // Poll the JS input system
-    }
+    override fun isActionActive(action: Action): Boolean = false
 
-    override fun isActionActive(action: Action): Boolean {
-        // Check if the action is active in the JS input system
-        return false
-    }
+    override fun getMovement(): Vector2 = Vector2()
 }

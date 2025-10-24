@@ -1,12 +1,15 @@
 package com.kollider.engine.ecs
 
-class World {
+import kotlin.reflect.KClass
+
+class World : Entity.ComponentObserver {
     private val entities = mutableListOf<Entity>()
     private val systems = mutableListOf<System>()
 
-    // For deferring removals until after the update loop finishes.
     private val pendingEntityRemovals = mutableListOf<Entity>()
     private val pendingSystemRemovals = mutableListOf<System>()
+
+    private val entityViews = mutableMapOf<Set<KClass<out Component>>, EntityView>()
 
     private var nextEntityId = 0
 
@@ -15,7 +18,9 @@ class World {
      */
     fun createEntity(): Entity {
         val entity = Entity(nextEntityId++)
+        entity.bindObserver(this)
         entities.add(entity)
+        trackEntityAcrossViews(entity)
         return entity
     }
 
@@ -32,6 +37,7 @@ class World {
      */
     fun addSystem(system: System) {
         systems.add(system)
+        system.bindWorld(this)
     }
 
     /**
@@ -43,6 +49,21 @@ class World {
     }
 
     /**
+     * Returns a cached view of entities containing all [componentTypes].
+     * The view updates automatically as components are added or removed.
+     */
+    fun view(vararg componentTypes: KClass<out Component>): EntityView {
+        require(componentTypes.isNotEmpty()) { "At least one component type is required" }
+        val key = componentTypes.toSet()
+        return entityViews.getOrPut(key) {
+            EntityView(key).also { view ->
+                entities.filter { entity -> key.all(entity::has) }
+                    .forEach(view::add)
+            }
+        }
+    }
+
+    /**
      * Updates all systems, passing the list of entities.
      * We iterate over a snapshot of the systems so we can safely remove them after the loop.
      */
@@ -51,16 +72,31 @@ class World {
         currentSystems.forEach { it.update(entities, deltaTime) }
 
         // Now apply any pending entity removals.
-        pendingEntityRemovals.forEach { entities.remove(it) }
-        pendingEntityRemovals.clear()
+        if (pendingEntityRemovals.isNotEmpty()) {
+            pendingEntityRemovals.forEach { entity ->
+                entities.remove(entity)
+                removeFromViews(entity)
+            }
+            pendingEntityRemovals.clear()
+        }
 
         // Apply any pending system removals.
-        pendingSystemRemovals.forEach { systems.remove(it) }
-        pendingSystemRemovals.clear()
+        if (pendingSystemRemovals.isNotEmpty()) {
+            pendingSystemRemovals.forEach { system ->
+                systems.remove(system)
+                system.unbindWorld()
+            }
+            pendingSystemRemovals.clear()
+        }
     }
 
     fun dispose() {
-        systems.forEach { it.dispose() }
+        systems.forEach {
+            it.dispose()
+            it.unbindWorld()
+        }
+        systems.clear()
+        entityViews.clear()
     }
 
     fun resize(width: Int, height: Int) {
@@ -73,5 +109,33 @@ class World {
 
     fun resume() {
         systems.forEach { it.resume() }
+    }
+
+    override fun onComponentAdded(entity: Entity, type: KClass<out Component>) {
+        entityViews.forEach { (componentTypes, view) ->
+            if (componentTypes.all(entity::has)) {
+                view.add(entity)
+            }
+        }
+    }
+
+    override fun onComponentRemoved(entity: Entity, type: KClass<out Component>) {
+        entityViews.forEach { (componentTypes, view) ->
+            if (!componentTypes.all(entity::has)) {
+                view.remove(entity)
+            }
+        }
+    }
+
+    private fun trackEntityAcrossViews(entity: Entity) {
+        entityViews.forEach { (componentTypes, view) ->
+            if (componentTypes.all(entity::has)) {
+                view.add(entity)
+            }
+        }
+    }
+
+    private fun removeFromViews(entity: Entity) {
+        entityViews.values.forEach { it.remove(entity) }
     }
 }

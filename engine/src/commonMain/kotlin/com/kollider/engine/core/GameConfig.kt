@@ -1,5 +1,6 @@
 package com.kollider.engine.core
 
+import com.kollider.engine.assets.AssetManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -9,5 +10,12 @@ data class GameConfig(
     var height: Int = 600,
     var title: String = "Kollider Game",
     var appContext: AppContext = AppContext,
-    var scope: CoroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
-)
+    var scope: CoroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob()),
+    val assets: AssetManager = AssetManager(scope)
+) {
+    val worldBounds: WorldBounds
+        get() = WorldBounds(
+            width = width.toFloat(),
+            height = height.toFloat(),
+        )
+}

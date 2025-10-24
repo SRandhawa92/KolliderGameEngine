@@ -10,7 +10,7 @@ import kotlin.math.abs
  * It is used to detect gestures on the Android platform
  *
  */
-class GestureControl: GestureDetector.SimpleOnGestureListener() {
+class GestureControl(private val dispatcher: InputDispatcher) : GestureDetector.SimpleOnGestureListener() {
 
     val activeActions = mutableSetOf<Action>()
     var movement = Vector2(0f, 0f)
@@ -23,7 +23,9 @@ class GestureControl: GestureDetector.SimpleOnGestureListener() {
      * @return true if the event is consumed, else false
      */
     override fun onDown(e: MotionEvent): Boolean {
-        activeActions.add(Shoot)
+        if (activeActions.add(Shoot)) {
+            dispatcher.emit(Shoot, true)
+        }
         return true
     }
 
@@ -51,6 +53,9 @@ class GestureControl: GestureDetector.SimpleOnGestureListener() {
      */
     fun reset() {
         movement = Vector2(0f, 0f)
+        if (activeActions.remove(Shoot)) {
+            dispatcher.emit(Shoot, false)
+        }
         activeActions.clear()
     }
 }

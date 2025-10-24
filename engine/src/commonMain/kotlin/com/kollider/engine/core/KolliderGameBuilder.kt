@@ -7,7 +7,6 @@ import com.kollider.engine.ecs.input.InputSystem
 import com.kollider.engine.ecs.input.createInputHandler
 import com.kollider.engine.ecs.physics.CollisionSystem
 import com.kollider.engine.ecs.physics.PhysicsSystem
-import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.engine.ecs.rendering.RenderSystem
 import com.kollider.engine.ecs.rendering.Renderer
 import com.kollider.engine.ecs.rendering.createCanvas
@@ -56,7 +55,7 @@ fun createWorld(
     val world = World()
     world.addSystem(InputSystem(inputHandler))
     world.addSystem(PhysicsSystem())
-    world.addSystem(CollisionSystem(Drawable.Rect(config.width.toFloat(), config.height.toFloat(),0, 0f, 0f)))
+    world.addSystem(CollisionSystem(config.worldBounds))
     world.addSystem(RenderSystem(renderer))
     return world
 }
@@ -116,8 +115,10 @@ class KolliderGameBuilder(
         // Add custom systems, passing in the config.
         customSystems.forEach { systemFactory -> world.addSystem(systemFactory(config)) }
 
-        val engine = GameEngine(world, config.scope).apply { start() }
+        val engine = GameEngine(world, config.scope)
         val context = GameContext(config, world, engine)
+        engine.attachContext(context)
+        engine.start()
 
         gameFactory(context)
     }

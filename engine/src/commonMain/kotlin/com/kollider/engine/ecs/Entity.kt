@@ -9,12 +9,15 @@ import kotlin.reflect.KClass
  */
 class Entity(val id: Int) {
     private val components: MutableMap<KClass<*>, Component> = mutableMapOf()
+    private var observer: ComponentObserver? = null
 
     /**
      * Attaches a component to this entity.
      */
     fun <T : Component> add(component: T): Entity {
-        components[component::class] = component
+        val type = component::class
+        components[type] = component
+        observer?.onComponentAdded(this, type)
         return this
     }
 
@@ -30,7 +33,10 @@ class Entity(val id: Int) {
      * Removes a component from this entity.
      */
     fun <T : Component> remove(componentClass: KClass<T>) {
-        components.remove(componentClass)
+        val removed = components.remove(componentClass)
+        if (removed != null) {
+            observer?.onComponentRemoved(this, componentClass)
+        }
     }
 
     /**
@@ -38,5 +44,14 @@ class Entity(val id: Int) {
      */
     fun has(componentClass: KClass<out Component>): Boolean {
         return components.containsKey(componentClass)
+    }
+
+    internal fun bindObserver(observer: ComponentObserver) {
+        this.observer = observer
+    }
+
+    internal interface ComponentObserver {
+        fun onComponentAdded(entity: Entity, type: KClass<out Component>)
+        fun onComponentRemoved(entity: Entity, type: KClass<out Component>)
     }
 }
