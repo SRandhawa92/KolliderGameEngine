@@ -7,6 +7,13 @@ import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.rendering.Drawable
 
+/**
+ * Performs broad-phase collision detection using a uniform grid and populates [Collider.collisions].
+ *
+ * ```kotlin
+ * world.addSystem(CollisionSystem(config.worldBounds))
+ * ```
+ */
 class CollisionSystem(private val worldBounds: WorldBounds) : System() {
 
     @Deprecated(
@@ -28,10 +35,20 @@ class CollisionSystem(private val worldBounds: WorldBounds) : System() {
     private val grid = UniformGrid(cellSize = 64f)
     private lateinit var collidableView: EntityView
 
+    /**
+     * Prepares an [EntityView] for entities that carry both [Position] and [Collider].
+     */
     override fun onAttach(world: World) {
         collidableView = world.view(Position::class, Collider::class)
     }
 
+    /**
+     * Clears previous collision events, rebuilds the spatial index, and records new collisions.
+     *
+     * ```kotlin
+     * collisionSystem.update(entities, deltaTime)
+     * ```
+     */
     override fun update(entities: List<Entity>, deltaTime: Float) {
         val collidables = collidableView
 

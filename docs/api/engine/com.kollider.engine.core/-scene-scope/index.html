@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>SceneScope</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            engine
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":engine:dokkaHtml/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="engine::com.kollider.engine.core/SceneScope///PointingToDeclaration//-59495948">
+  <div class="breadcrumbs"><a href="../../../index.html">engine</a><span class="delimiter">/</span><a href="../index.html">com.kollider.engine.core</a><span class="delimiter">/</span><span class="current">SceneScope</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Scene</span><wbr></wbr><span><span>Scope</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SceneScope</a></div><p class="paragraph">Utility wrapper exposed to scenes that simplifies world interactions and clean-up.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-1581436019%2FProperties%2F-59495948" anchor-label="config" id="-1581436019%2FProperties%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="config.html"><span><span>config</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1581436019%2FProperties%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="config.html">config</a><span class="token operator">: </span><a href="../-game-config/index.html">GameConfig</a></div><div class="brief "><p class="paragraph">Shortcut to <a href="../-game-context/config.html">GameContext.config</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1117402716%2FProperties%2F-59495948" anchor-label="context" id="1117402716%2FProperties%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="context.html"><span><span>context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1117402716%2FProperties%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="context.html">context</a><span class="token operator">: </span><a href="../-game-context/index.html">GameContext</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1761043315%2FProperties%2F-59495948" anchor-label="engine" id="-1761043315%2FProperties%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="engine.html"><span><span>engine</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1761043315%2FProperties%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="engine.html">engine</a><span class="token operator">: </span><a href="../-game-engine/index.html">GameEngine</a></div><div class="brief "><p class="paragraph">Shortcut to the running <a href="../-game-engine/index.html">GameEngine</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="889192334%2FProperties%2F-59495948" anchor-label="worldRef" id="889192334%2FProperties%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="world-ref.html"><span>world</span><wbr></wbr><span><span>Ref</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="889192334%2FProperties%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">val </span><a href="world-ref.html">worldRef</a><span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-world/index.html">World</a></div><div class="brief "><p class="paragraph">Provides direct access to the underlying <a href="../../com.kollider.engine.ecs/-world/index.html">World</a> if needed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="163091740%2FFunctions%2F-59495948" anchor-label="addSystem" id="163091740%2FFunctions%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-system.html"><span>add</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="163091740%2FFunctions%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="add-system.html"><span class="token function">addSystem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">system<span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-system/index.html">System</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-system/index.html">System</a></div><div class="brief "><p class="paragraph">Adds a <a href="add-system.html">system</a> to the world and tracks it for automatic removal when the scene exits.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1249959418%2FFunctions%2F-59495948" anchor-label="createEntity" id="1249959418%2FFunctions%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-entity.html"><span>create</span><wbr></wbr><span><span>Entity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1249959418%2FFunctions%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="create-entity.html"><span class="token function">createEntity</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">builder<span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-entity/index.html">Entity</a><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-entity/index.html">Entity</a></div><div class="brief "><p class="paragraph">Creates a new entity via <a href="../../com.kollider.engine.ecs/-world/create-entity.html">World.createEntity</a> and registers it for clean-up.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="124196477%2FFunctions%2F-59495948" anchor-label="removeSystem" id="124196477%2FFunctions%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="remove-system.html"><span>remove</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="124196477%2FFunctions%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="remove-system.html"><span class="token function">removeSystem</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">system<span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-system/index.html">System</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Removes a previously added system immediately.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1778738797%2FFunctions%2F-59495948" anchor-label="track" id="1778738797%2FFunctions%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="track.html"><span><span>track</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1778738797%2FFunctions%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="track.html"><span class="token function">track</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">entity<span class="token operator">: </span><a href="../../com.kollider.engine.ecs/-entity/index.html">Entity</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Tracks an externally created <a href="track.html">entity</a> so it is removed when the scene exits.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

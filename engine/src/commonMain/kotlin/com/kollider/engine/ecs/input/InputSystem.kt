@@ -6,8 +6,11 @@ import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 
 /**
- * The InputSystem updates each [InputComponent] with analog state and forwards
- * dispatcher events to per-entity listeners.
+ * Synchronises platform input with [InputComponent] instances attached to entities.
+ *
+ * ```kotlin
+ * world.addSystem(InputSystem(inputHandler, config.inputRouter))
+ * ```
  */
 class InputSystem(
     private val inputHandler: InputHandler,
@@ -17,10 +20,24 @@ class InputSystem(
     private val trackedComponents = mutableMapOf<Int, InputComponent>()
     private lateinit var inputView: EntityView
 
+    /**
+     * Builds a view tracking all entities that expose an [InputComponent].
+     *
+     * ```kotlin
+     * inputSystem.onAttach(world)
+     * ```
+     */
     override fun onAttach(world: World) {
         inputView = world.view(InputComponent::class)
     }
 
+    /**
+     * Updates analog state, manages routing, and dispatches discrete actions every frame.
+     *
+     * ```kotlin
+     * inputSystem.update(entities, deltaTime)
+     * ```
+     */
     override fun update(entities: List<Entity>, deltaTime: Float) {
         val movement = inputHandler.getMovement()
         val shootActive = inputHandler.isActionActive(Shoot)
@@ -74,6 +91,13 @@ class InputSystem(
         }
     }
 
+    /**
+     * Applies a discrete [event] to the provided [component], updating flags and notifying listeners.
+     *
+     * ```kotlin
+     * applyEvent(inputComponent, InputEvent(Shoot, true))
+     * ```
+     */
     private fun applyEvent(component: InputComponent, event: InputEvent) {
         when (event.action) {
             Shoot -> if (component.accepts(Shoot)) component.shoot = event.isActive

@@ -3,6 +3,9 @@ package com.kollider.engine.ecs.physics
 import com.kollider.engine.ecs.Entity
 import kotlin.math.floor
 
+/**
+ * Checks whether two axis-aligned bounding boxes intersect.
+ */
 @PublishedApi
 internal fun aabbIntersects(
     ax: Float, ay: Float, aw: Float, ah: Float,
@@ -12,8 +15,17 @@ internal fun aabbIntersects(
 }
 
 /**
- * Extremely simple uniform grid broadphase.
- * Insert AABBs (entity + bounds) each frame, then iterate potential pairs without n^2.
+ * Extremely simple uniform grid broad phase used to prune collision checks.
+ *
+ * Typical usage records all colliders every frame, then iterates potential pairs:
+ *
+ * ```kotlin
+ * grid.clear()
+ * colliders.forEach { (entity, bounds) ->
+ *     grid.insert(entity, bounds.x, bounds.y, bounds.width, bounds.height)
+ * }
+ * grid.forEachPotentialPairs { a, b -> narrowPhaseTest(a, b) }
+ * ```
  */
 class UniformGrid(
     val cellSize: Float = 64f,
@@ -23,12 +35,22 @@ class UniformGrid(
     val buckets = HashMap<Int, MutableList<Entity>>(maxBuckets)
     val pairBuffer = ArrayList<Pair<Entity, Entity>>(256)
 
+    /**
+     * Empties all buckets and cached pairs without reallocating.
+     */
     fun clear() {
         // avoid re-allocating bucket lists; just clear
         buckets.values.forEach { it.clear() }
         pairBuffer.clear()
     }
 
+    /**
+     * Inserts an entity and its bounding box into every grid cell it overlaps.
+     *
+     * ```kotlin
+     * grid.insert(entity, x, y, width, height)
+     * ```
+     */
     fun insert(e: Entity, x: Float, y: Float, w: Float, h: Float) {
         val minCx = floor(x / cellSize).toInt()
         val minCy = floor(y / cellSize).toInt()
@@ -45,8 +67,13 @@ class UniformGrid(
     }
 
     /**
-     * Calls [consume] for each *unique* potential pair (a,b) found in grid cells.
-     * No ordering guarantees; pairs are unique for the duration of this call.
+     * Calls [consume] for each *unique* potential pair detected in populated cells.
+     *
+     * ```kotlin
+     * grid.forEachPotentialPairs { a, b ->
+     *     if (aabbIntersects(a, b)) resolveCollision(a, b)
+     * }
+     * ```
      */
     inline fun forEachPotentialPairs(crossinline consume: (Entity, Entity) -> Unit) {
         pairBuffer.clear()
@@ -71,6 +98,9 @@ class UniformGrid(
         }
     }
 
+    /**
+     * Combines 2D cell coordinates into a pseudo-unique hash key.
+     */
     private fun hash(cx: Int, cy: Int): Int {
         // A simple 2D hash (32-bit); large primes to reduce collisions
         return (cx * 73856093) xor (cy * 19349663)

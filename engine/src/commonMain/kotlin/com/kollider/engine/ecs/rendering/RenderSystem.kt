@@ -7,15 +7,33 @@ import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.physics.Position
 
 /**
- * The RenderSystem is responsible for drawing all entities that have rendering data.
+ * Iterates over drawable entities and issues drawing commands to the supplied [Renderer].
+ *
+ * ```kotlin
+ * world.addSystem(RenderSystem(renderer))
+ * world.createEntity().apply {
+ *     add(Position(120f, 80f))
+ *     add(Drawable.Rect(width = 32f, height = 32f, color = 0xFF00FF00.toInt()))
+ * }
+ * ```
  */
 class RenderSystem(private val renderer: Renderer) : System() {
     private lateinit var renderView: EntityView
 
+    /**
+     * Caches an [EntityView] that tracks `Position + Drawable` entities for quick iteration.
+     */
     override fun onAttach(world: World) {
         renderView = world.view(Position::class, Drawable::class)
     }
 
+    /**
+     * Clears the frame, draws each entity, then presents the composed image.
+     *
+     * ```kotlin
+     * renderSystem.update(entities, deltaTime)
+     * ```
+     */
     override fun update(entities: List<Entity>, deltaTime: Float) {
         // Clear the screen.
         renderer.clear()
@@ -74,10 +92,20 @@ class RenderSystem(private val renderer: Renderer) : System() {
         renderer.present()
     }
 
+    /**
+     * Disposes the renderer when the system is removed from the world.
+     */
     override fun dispose() {
         renderer.dispose()
     }
 
+    /**
+     * Forwards the resize event to the renderer so it can adjust internal buffers.
+     *
+     * ```kotlin
+     * renderSystem.resize(width, height)
+     * ```
+     */
     override fun resize(width: Int, height: Int) {
         renderer.resize(width, height)
     }

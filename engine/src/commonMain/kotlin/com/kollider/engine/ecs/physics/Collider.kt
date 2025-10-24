@@ -4,7 +4,7 @@ import com.kollider.engine.ecs.Component
 import com.kollider.engine.ecs.Entity
 
 /**
- * The type of collision that occurred.
+ * Enumerates the types of collisions recognised by [CollisionSystem].
  */
 enum class CollisionType {
     BOUNDARY_TOP,
@@ -15,7 +15,11 @@ enum class CollisionType {
 }
 
 /**
- * A collision event that occurred.
+ * Describes a collision detected during the last physics update.
+ *
+ * ```kotlin
+ * collider.collisions.forEach { event -> handle(event) }
+ * ```
  */
 data class CollisionEvent(
     val type: CollisionType,
@@ -24,8 +28,14 @@ data class CollisionEvent(
 )
 
 /**
- * A component representing an entity's collision bounds.
- * The collider is assumed to be axis-aligned and centered at the entity's position.
+ * Axis-aligned collision bounds attached to an entity.
+ *
+ * Collisions detected by [CollisionSystem] populate the [collisions] list each frame.
+ *
+ * ```kotlin
+ * val collider = Collider(width = 32f, height = 32f)
+ * entity.add(collider)
+ * ```
  */
 data class Collider(
     val width: Float,

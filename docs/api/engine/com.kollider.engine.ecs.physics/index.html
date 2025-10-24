@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.kollider.engine.ecs.physics</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../index.html">
+                            engine
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":engine:dokkaHtml/commonMain">common</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="engine::com.kollider.engine.ecs.physics////PointingToDeclaration//-59495948">
+  <div class="breadcrumbs"><a href="../../index.html">engine</a><span class="delimiter">/</span><span class="current">com.kollider.engine.ecs.physics</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="146237218%2FClasslikes%2F-59495948" anchor-label="BoundingBox" id="146237218%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bounding-box/index.html"><span>Bounding</span><wbr></wbr><span><span>Box</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="146237218%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-bounding-box/index.html">BoundingBox</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Mutable axis-aligned bounding box helper used by collision detection utilities.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1629399259%2FClasslikes%2F-59495948" anchor-label="Collider" id="-1629399259%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-collider/index.html"><span><span>Collider</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1629399259%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-collider/index.html">Collider</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>width<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>height<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>collisions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><a href="-collision-event/index.html">CollisionEvent</a><span class="token operator">&gt;</span><span class="token operator"> = </span>mutableListOf()</span></span><span class="token punctuation">)</span> : <a href="../com.kollider.engine.ecs/-component/index.html">Component</a></div><div class="brief "><p class="paragraph">Axis-aligned collision bounds attached to an entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-672733935%2FClasslikes%2F-59495948" anchor-label="CollisionEvent" id="-672733935%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-collision-event/index.html"><span>Collision</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-672733935%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-collision-event/index.html">CollisionEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>type<span class="token operator">: </span><a href="-collision-type/index.html">CollisionType</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>entity<span class="token operator">: </span><a href="../com.kollider.engine.ecs/-entity/index.html">Entity</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>other<span class="token operator">: </span><a href="../com.kollider.engine.ecs/-entity/index.html">Entity</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Describes a collision detected during the last physics update.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-951210520%2FClasslikes%2F-59495948" anchor-label="CollisionSystem" id="-951210520%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-collision-system/index.html"><span>Collision</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-951210520%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-collision-system/index.html">CollisionSystem</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">worldBounds<span class="token operator">: </span><a href="../com.kollider.engine.core/-world-bounds/index.html">WorldBounds</a></span></span><span class="token punctuation">)</span> : <a href="../com.kollider.engine.ecs/-system/index.html">System</a></div><div class="brief "><p class="paragraph">Performs broad-phase collision detection using a uniform grid and populates <a href="-collider/collisions.html">Collider.collisions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1564029763%2FClasslikes%2F-59495948" anchor-label="CollisionType" id="-1564029763%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-collision-type/index.html"><span>Collision</span><wbr></wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1564029763%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-collision-type/index.html">CollisionType</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-collision-type/index.html">CollisionType</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Enumerates the types of collisions recognised by <a href="-collision-system/index.html">CollisionSystem</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-658001357%2FClasslikes%2F-59495948" anchor-label="PhysicsSystem" id="-658001357%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-physics-system/index.html"><span>Physics</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-658001357%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-physics-system/index.html">PhysicsSystem</a> : <a href="../com.kollider.engine.ecs/-system/index.html">System</a></div><div class="brief "><p class="paragraph">Basic integration system that applies <a href="-velocity/index.html">Velocity</a> to <a href="-position/index.html">Position</a> each frame.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1131850640%2FClasslikes%2F-59495948" anchor-label="Position" id="1131850640%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-position/index.html"><span><span>Position</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1131850640%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-position/index.html">Position</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span> : <a href="../com.kollider.engine.ecs/-component/index.html">Component</a></div><div class="brief "><p class="paragraph">Component storing an entity's world-space coordinates.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1942105873%2FClasslikes%2F-59495948" anchor-label="UniformGrid" id="-1942105873%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-uniform-grid/index.html"><span>Uniform</span><wbr></wbr><span><span>Grid</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1942105873%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-uniform-grid/index.html">UniformGrid</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>cellSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">64.0f</span><span class="token punctuation">, </span></span><span class="parameter ">maxBuckets<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">4096</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Extremely simple uniform grid broad phase used to prune collision checks.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-322524582%2FClasslikes%2F-59495948" anchor-label="Vector2" id="-322524582%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-vector2/index.html"><span><span>Vector2</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-322524582%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-vector2/index.html">Vector2</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>x<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>y<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token operator"> = </span><span class="token constant">0.0f</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Mutable 2D vector used for analog movement or directional input.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-890316196%2FClasslikes%2F-59495948" anchor-label="Velocity" id="-890316196%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-velocity/index.html"><span><span>Velocity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-890316196%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-velocity/index.html">Velocity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>vx<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>vy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-float/index.html">Float</a></span></span><span class="token punctuation">)</span> : <a href="../com.kollider.engine.ecs/-component/index.html">Component</a></div><div class="brief "><p class="paragraph">Component describing the rate of change applied to a <a href="-position/index.html">Position</a> every frame.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

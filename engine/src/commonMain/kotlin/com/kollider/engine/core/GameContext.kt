@@ -3,8 +3,15 @@ package com.kollider.engine.core
 import com.kollider.engine.ecs.World
 
 /**
- * Represents the context of a game.
- * Contains the game configuration and the game world.
+ * Aggregates engine services required by running games and scenes.
+ *
+ * ```kotlin
+ * fun GameContext.spawnPlayer() {
+ *     world.createEntity().apply {
+ *         add(Position(0f, 0f))
+ *     }
+ * }
+ * ```
  */
 data class GameContext(
     val config: GameConfig,

@@ -13,13 +13,19 @@ import com.kollider.engine.ecs.rendering.createCanvas
 import com.kollider.engine.ecs.rendering.createRenderer
 
 /**
- * A helper DSL builder for registering custom systems.
+ * DSL helper used by [KolliderGameBuilder.systems] to register additional systems.
  */
 class SystemsBuilder {
     internal val systems = mutableListOf<(GameConfig) -> System>()
 
     /**
      * Registers a system by providing a lambda that receives the GameConfig.
+     *
+     * ```kotlin
+     * systems {
+     *     system { config -> DayNightCycleSystem(config.assets) }
+     * }
+     * ```
      */
     fun system(systemFactory: (GameConfig) -> System) {
         systems.add(systemFactory)
@@ -27,13 +33,21 @@ class SystemsBuilder {
 }
 
 /**
- * A helper DSL builder for registering custom entities.
+ * DSL helper used by [KolliderGameBuilder.entities] to create initial entities.
  */
 class EntitiesBuilder {
     internal val entityRegistrations = mutableListOf<World.(GameConfig) -> Unit>()
 
     /**
      * Registers an entity creation lambda.
+     *
+     * ```kotlin
+     * entities {
+     *     entity { config ->
+     *         createEntity().add(Position(config.width / 2f, config.height / 2f))
+     *     }
+     * }
+     * ```
      */
     fun entity(registration: World.(GameConfig) -> Unit) {
         entityRegistrations.add(registration)
@@ -41,11 +55,11 @@ class EntitiesBuilder {
 }
 
 /**
- * Creates a World with default systems.
+ * Creates a [World] populated with the default engine systems (input, physics, collision, render).
  *
- * @param inputHandler the input handler to use.
- * @param renderer the renderer to use.
- * @param config the game configuration.
+ * ```kotlin
+ * val world = createWorld(inputHandler, renderer, config)
+ * ```
  */
 fun createWorld(
     inputHandler: InputHandler,
@@ -61,7 +75,13 @@ fun createWorld(
 }
 
 /**
- * DSL function for creating a Kollider game.
+ * Entry point for configuring and launching a Kollider game instance.
+ *
+ * ```kotlin
+ * createKolliderGame {
+ *     title = "Pong"
+ * }.start { context -> Pong(context) }
+ * ```
  */
 fun createKolliderGame(
     configure: GameConfig.() -> Unit,
@@ -71,7 +91,7 @@ fun createKolliderGame(
 
 
 /**
- * Builder for creating and starting a Kollider game.
+ * Fluent builder that composes the world, systems, and game factory before launching.
  */
 class KolliderGameBuilder(
     private val config: GameConfig,
@@ -80,7 +100,7 @@ class KolliderGameBuilder(
     private val entityRegistrations = mutableListOf<World.(GameConfig) -> Unit>()
 
     /**
-     * DSL block for registering custom systems.
+     * Registers extra systems via a DSL block.
      */
     fun systems(block: SystemsBuilder.() -> Unit): KolliderGameBuilder {
         val builder = SystemsBuilder().apply(block)
@@ -89,7 +109,7 @@ class KolliderGameBuilder(
     }
 
     /**
-     * DSL block for registering custom entities.
+     * Registers entity factories that run immediately after the world is created.
      */
     fun entities(block: EntitiesBuilder.() -> Unit): KolliderGameBuilder {
         val builder = EntitiesBuilder().apply(block)
@@ -102,6 +122,15 @@ class KolliderGameBuilder(
      * and starts the GameEngine.
      *
      * @param gameFactory the factory function for creating the game.
+     */
+    /**
+     * Finalises configuration, starts the engine, and instantiates your [Game].
+     *
+     * ```kotlin
+     * createKolliderGame { }
+     *     .systems { }
+     *     .start { context -> SampleGame(context) }
+     * ```
      */
     fun start(gameFactory: (GameContext) -> Game)  {
         val inputHandler = createInputHandler(config)

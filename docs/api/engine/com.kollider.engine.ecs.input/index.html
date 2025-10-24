@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.kollider.engine.ecs.input</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../index.html">
+                            engine
+                    </a>
+            </div>
+            <div class="library-version">
+            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":engine:dokkaHtml/androidMain">android</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":engine:dokkaHtml/commonMain">common</button>
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":engine:dokkaHtml/iosMain">ios</button>
+                <button class="platform-tag platform-selector js-like" data-active="" data-filter=":engine:dokkaHtml/jsMain">js</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":engine:dokkaHtml/jvmMain">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="engine::com.kollider.engine.ecs.input////PointingToDeclaration//2043070822">
+  <div class="breadcrumbs"><a href="../../index.html">engine</a><span class="delimiter">/</span><span class="current">com.kollider.engine.ecs.input</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-2014735706%2FClasslikes%2F-59495948" anchor-label="Action" id="-2014735706%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-action/index.html"><span><span>Action</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2014735706%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-action/index.html">Action</a></div><div class="brief "><p class="paragraph">Represents a discrete, nameable input action (e.g., &quot;Jump&quot; or &quot;Pause&quot;).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1517952809%2FClasslikes%2F424749414" anchor-label="AndroidInputHandler" id="-1517952809%2FClasslikes%2F424749414" data-filterable-set=":engine:dokkaHtml/androidMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/androidMain" data-filterable-set=":engine:dokkaHtml/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-android-input-handler/index.html"><span>Android</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1517952809%2FClasslikes%2F424749414"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/androidMain" data-filterable-set=":engine:dokkaHtml/androidMain" data-active="" data-toggle=":engine:dokkaHtml/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-android-input-handler/index.html">AndroidInputHandler</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">context<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/content/Context.html">Context</a></span></span><span class="token punctuation">)</span> : <a href="-input-handler/index.html">InputHandler</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-461432888%2FClasslikes%2F424749414" anchor-label="GestureControl" id="-461432888%2FClasslikes%2F424749414" data-filterable-set=":engine:dokkaHtml/androidMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/androidMain" data-filterable-set=":engine:dokkaHtml/androidMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-gesture-control/index.html"><span>Gesture</span><wbr></wbr><span><span>Control</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-461432888%2FClasslikes%2F424749414"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/androidMain" data-filterable-set=":engine:dokkaHtml/androidMain" data-active="" data-toggle=":engine:dokkaHtml/androidMain">android</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/androidMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-gesture-control/index.html">GestureControl</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">dispatcher<span class="token operator">: </span><a href="-input-dispatcher/index.html">InputDispatcher</a></span></span><span class="token punctuation">)</span> : <a href="https://developer.android.com/reference/kotlin/android/view/GestureDetector.SimpleOnGestureListener.html">GestureDetector.SimpleOnGestureListener</a></div><div class="brief "><p class="paragraph">GestureControl is a class that extends GestureDetector.SimpleOnGestureListener It is used to detect gestures on the Android platform</p></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1995216937%2FClasslikes%2F-59495948" anchor-label="InputComponent" id="1995216937%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-component/index.html"><span>Input</span><wbr></wbr><span><span>Component</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1995216937%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-input-component/index.html">InputComponent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>movement<span class="token operator">: </span><a href="../com.kollider.engine.ecs.physics/-vector2/index.html">Vector2</a><span class="token operator"> = </span>Vector2(0f, 0f)<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>shoot<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>paused<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">var </span>movementEnabled<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span> : <a href="../com.kollider.engine.ecs/-component/index.html">Component</a></div><div class="brief "><p class="paragraph">Component that stores per-entity input state and optional listeners.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-685045835%2FClasslikes%2F-59495948" anchor-label="InputDispatcher" id="-685045835%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-dispatcher/index.html"><span>Input</span><wbr></wbr><span><span>Dispatcher</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-685045835%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-input-dispatcher/index.html">InputDispatcher</a></div><div class="brief "><p class="paragraph">Collects action events emitted by platform input handlers. Systems can poll the dispatcher each frame and forward the events to interested entities.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-673034324%2FClasslikes%2F-59495948" anchor-label="InputEvent" id="-673034324%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-event/index.html"><span>Input</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-673034324%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-input-event/index.html">InputEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>action<span class="token operator">: </span><a href="-action/index.html">Action</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isActive<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>targetEntityId<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Represents a high-level input event, optionally targeting a specific entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1836036028%2FClasslikes%2F-59495948" anchor-label="InputHandler" id="1836036028%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-handler/index.html"><span>Input</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1836036028%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-input-handler/index.html">InputHandler</a></div><div class="brief "><p class="paragraph">Bridges platform input APIs with the engine's action/movement model.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1394273544%2FClasslikes%2F-59495948" anchor-label="InputListener" id="1394273544%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-listener/index.html"><span>Input</span><wbr></wbr><span><span>Listener</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1394273544%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-input-listener/index.html">InputListener</a></div><div class="brief "><p class="paragraph">Functional listener triggered whenever an <a href="-input-event/index.html">InputEvent</a> is dispatched.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="116818643%2FClasslikes%2F-59495948" anchor-label="InputRouter" id="116818643%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-router/index.html"><span>Input</span><wbr></wbr><span><span>Router</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="116818643%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-input-router/index.html">InputRouter</a></div><div class="brief "><p class="paragraph">Utility that directs input from the shared handler to focused entities.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-960522579%2FClasslikes%2F-59495948" anchor-label="InputSystem" id="-960522579%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-input-system/index.html"><span>Input</span><wbr></wbr><span><span>System</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-960522579%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-input-system/index.html">InputSystem</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">inputHandler<span class="token operator">: </span><a href="-input-handler/index.html">InputHandler</a><span class="token punctuation">, </span></span><span class="parameter ">router<span class="token operator">: </span><a href="-input-router/index.html">InputRouter</a></span></span><span class="token punctuation">)</span> : <a href="../com.kollider.engine.ecs/-system/index.html">System</a></div><div class="brief "><p class="paragraph">Synchronises platform input with <a href="-input-component/index.html">InputComponent</a> instances attached to entities.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1399065721%2FClasslikes%2F388140892" anchor-label="IosInputHandler" id="1399065721%2FClasslikes%2F388140892" data-filterable-set=":engine:dokkaHtml/iosMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/iosMain" data-filterable-set=":engine:dokkaHtml/iosMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ios-input-handler/index.html"><span>Ios</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1399065721%2FClasslikes%2F388140892"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/iosMain" data-filterable-set=":engine:dokkaHtml/iosMain" data-active="" data-toggle=":engine:dokkaHtml/iosMain">ios</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/iosMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-ios-input-handler/index.html">IosInputHandler</a> : <span data-unresolved-link="com.kollider.engine.ecs.input/InputHandler///PointingToDeclaration/">InputHandler</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-871809741%2FClasslikes%2F741162902" anchor-label="JsInputHandler" id="-871809741%2FClasslikes%2F741162902" data-filterable-set=":engine:dokkaHtml/jsMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/jsMain" data-filterable-set=":engine:dokkaHtml/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-js-input-handler/index.html"><span>Js</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-871809741%2FClasslikes%2F741162902"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/jsMain" data-filterable-set=":engine:dokkaHtml/jsMain" data-active="" data-toggle=":engine:dokkaHtml/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/jsMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-js-input-handler/index.html">JsInputHandler</a> : <a href="-input-handler/index.html">InputHandler</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-510061467%2FClasslikes%2F-1689817470" anchor-label="JvmInputHandler" id="-510061467%2FClasslikes%2F-1689817470" data-filterable-set=":engine:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/jvmMain" data-filterable-set=":engine:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-jvm-input-handler/index.html"><span>Jvm</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-510061467%2FClasslikes%2F-1689817470"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/jvmMain" data-filterable-set=":engine:dokkaHtml/jvmMain" data-active="" data-toggle=":engine:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-jvm-input-handler/index.html">JvmInputHandler</a> : <a href="-input-handler/index.html">InputHandler</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/KeyListener.html">KeyListener</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1782393424%2FClasslikes%2F-59495948" anchor-label="Pause" id="-1782393424%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-pause/index.html"><span><span>Pause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1782393424%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-pause/index.html">Pause</a> : <a href="-action/index.html">Action</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1250527143%2FClasslikes%2F-59495948" anchor-label="Shoot" id="1250527143%2FClasslikes%2F-59495948" data-filterable-set=":engine:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-shoot/index.html"><span><span>Shoot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1250527143%2FClasslikes%2F-59495948"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-shoot/index.html">Shoot</a> : <a href="-action/index.html">Action</a></div><div class="brief "><p class="paragraph">Built-in actions used by the sample games. Create your own to extend the input map.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-342264369%2FFunctions%2F2043070822" anchor-label="createInputHandler" id="-342264369%2FFunctions%2F2043070822" data-filterable-set=":engine:dokkaHtml/commonMain,:engine:dokkaHtml/androidMain,:engine:dokkaHtml/iosMain,:engine:dokkaHtml/jsMain,:engine:dokkaHtml/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":engine:dokkaHtml/commonMain,:engine:dokkaHtml/androidMain,:engine:dokkaHtml/iosMain,:engine:dokkaHtml/jsMain,:engine:dokkaHtml/jvmMain" data-filterable-set=":engine:dokkaHtml/commonMain,:engine:dokkaHtml/androidMain,:engine:dokkaHtml/iosMain,:engine:dokkaHtml/jsMain,:engine:dokkaHtml/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-input-handler.html"><span>create</span><wbr></wbr><span>Input</span><wbr></wbr><span><span>Handler</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-342264369%2FFunctions%2F2043070822"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/androidMain" data-filterable-set=":engine:dokkaHtml/androidMain" data-active="" data-toggle=":engine:dokkaHtml/androidMain">android</button><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/commonMain" data-filterable-set=":engine:dokkaHtml/commonMain" data-toggle=":engine:dokkaHtml/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/iosMain" data-filterable-set=":engine:dokkaHtml/iosMain" data-toggle=":engine:dokkaHtml/iosMain">ios</button><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/jsMain" data-filterable-set=":engine:dokkaHtml/jsMain" data-toggle=":engine:dokkaHtml/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":engine:dokkaHtml/jvmMain" data-filterable-set=":engine:dokkaHtml/jvmMain" data-toggle=":engine:dokkaHtml/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-togglable=":engine:dokkaHtml/androidMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="create-input-handler.html"><span class="token function">createInputHandler</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../com.kollider.engine.core/-game-config/index.html">GameConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-input-handler/index.html">InputHandler</a></div></div><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">fun </span><a href="create-input-handler.html"><span class="token function">createInputHandler</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../com.kollider.engine.core/-game-config/index.html">GameConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-input-handler/index.html">InputHandler</a></div><div class="brief "><p class="paragraph">Creates a platform-specific <a href="-input-handler/index.html">InputHandler</a> bound to the provided <a href="../com.kollider.engine.core/-game-config/index.html">GameConfig</a>.</p></div></div><div class="content sourceset-dependent-content" data-togglable=":engine:dokkaHtml/iosMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="create-input-handler.html"><span class="token function">createInputHandler</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><span data-unresolved-link="com.kollider.engine.core/GameConfig///PointingToDeclaration/">GameConfig</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.kollider.engine.ecs.input/InputHandler///PointingToDeclaration/">InputHandler</span></div></div><div class="content sourceset-dependent-content" data-togglable=":engine:dokkaHtml/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="create-input-handler.html"><span class="token function">createInputHandler</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../com.kollider.engine.core/-game-config/index.html">GameConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-input-handler/index.html">InputHandler</a></div></div><div class="content sourceset-dependent-content" data-togglable=":engine:dokkaHtml/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">fun </span><a href="create-input-handler.html"><span class="token function">createInputHandler</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">config<span class="token operator">: </span><a href="../com.kollider.engine.core/-game-config/index.html">GameConfig</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-input-handler/index.html">InputHandler</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

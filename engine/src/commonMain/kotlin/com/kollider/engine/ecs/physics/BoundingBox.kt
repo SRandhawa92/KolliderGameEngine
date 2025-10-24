@@ -1,7 +1,14 @@
 package com.kollider.engine.ecs.physics
 
 /**
- * Represents an axis-aligned bounding box used for collision detection.
+ * Mutable axis-aligned bounding box helper used by collision detection utilities.
+ *
+ * ```kotlin
+ * val box = BoundingBox(x = 0f, y = 0f, width = 16f, height = 16f)
+ * if (box.intersects(otherBox)) {
+ *     resolveCollision()
+ * }
+ * ```
  */
 data class BoundingBox(
     var x: Float,

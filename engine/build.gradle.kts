@@ -1,9 +1,12 @@
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.mavenPublish)
+    alias(libs.plugins.dokka)
 }
 
 android {
@@ -82,4 +85,23 @@ publishing {
             from(components["kotlin"])
         }
     }
+}
+
+val dokkaHtml by tasks.existing(DokkaTask::class) {
+    outputDirectory.set(rootProject.layout.projectDirectory.dir("docs/api"))
+    doFirst {
+        val output = outputDirectory.get().asFile
+        if (output.exists()) {
+            output.deleteRecursively()
+        }
+        output.mkdirs()
+    }
+}
+
+tasks.named("build") {
+    dependsOn(dokkaHtml)
+}
+
+tasks.withType<KotlinCompilationTask<*>>().configureEach {
+    finalizedBy(dokkaHtml)
 }

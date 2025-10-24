@@ -1,9 +1,16 @@
 package com.kollider.engine.core
 
 /**
- * Represents a game.
- * Game-specific initialization (such as adding entities) can be done here.
+ * Base class for game entry points created via [createKolliderGame].
  *
- * The [gameContext] property is platform-specific.
+ * Subclass this to bootstrap your world with entities or additional systems.
+ *
+ * ```kotlin
+ * class MyGame(context: GameContext) : Game(context) {
+ *     init {
+ *         context.world.createEntity()
+ *     }
+ * }
+ * ```
  */
 abstract class Game(private val gameContext: GameContext)

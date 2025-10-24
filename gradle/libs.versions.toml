@@ -17,6 +17,7 @@ kotlin = "2.1.0"
 jetbrainsKotlinJvm = "1.9.24"
 testng = "6.9.6"
 kotlix-coroutines = "1.8.0"
+dokka = "1.9.20"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -47,3 +48,4 @@ androidKotlin = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrainsK
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 mavenPublish = { id = "maven-publish" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

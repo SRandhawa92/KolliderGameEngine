@@ -4,9 +4,17 @@ import com.kollider.engine.ecs.input.InputComponent
 import kotlin.reflect.KClass
 
 /**
- * A game entity that can have multiple components.
+ * Represents an addressable object in the ECS world.
  *
- * @property id a unique identifier for the entity.
+ * Entities are composed of [Component] instances and contain no behaviour on their own.
+ *
+ * ```kotlin
+ * val player = world.createEntity()
+ * player.add(Position(10f, 20f))
+ * player.add(Velocity(0f, 0f))
+ * ```
+ *
+ * @property id Unique identifier assigned by the [World].
  */
 class Entity(val id: Int) {
     private val components: MutableMap<KClass<*>, Component> = mutableMapOf()
@@ -14,6 +22,12 @@ class Entity(val id: Int) {
 
     /**
      * Attaches a component to this entity.
+     *
+     * ```kotlin
+     * entity.add(Position(0f, 0f))
+     * ```
+     *
+     * @return The entity itself to support fluent builders.
      */
     fun <T : Component> add(component: T): Entity {
         val type = component::class
@@ -27,6 +41,10 @@ class Entity(val id: Int) {
 
     /**
      * Retrieves a component from this entity.
+     *
+     * ```kotlin
+     * val position: Position? = entity.get(Position::class)
+     * ```
      */
     @Suppress("UNCHECKED_CAST")
     fun <T : Component> get(componentClass: KClass<T>): T? {
@@ -35,6 +53,10 @@ class Entity(val id: Int) {
 
     /**
      * Removes a component from this entity.
+     *
+     * ```kotlin
+     * entity.remove(Position::class)
+     * ```
      */
     fun <T : Component> remove(componentClass: KClass<T>) {
         val removed = components.remove(componentClass)
@@ -45,6 +67,12 @@ class Entity(val id: Int) {
 
     /**
      * Checks if the entity has a specific component.
+     *
+     * ```kotlin
+     * if (entity.has(Health::class)) {
+     *     // Safe to assume the entity is damageable.
+     * }
+     * ```
      */
     fun has(componentClass: KClass<out Component>): Boolean {
         return components.values.any { componentClass.isInstance(it) }
@@ -54,6 +82,9 @@ class Entity(val id: Int) {
         this.observer = observer
     }
 
+    /**
+     * Observer notified whenever components are added or removed.
+     */
     internal interface ComponentObserver {
         fun onComponentAdded(entity: Entity, type: KClass<out Component>)
         fun onComponentRemoved(entity: Entity, type: KClass<out Component>)

@@ -14,11 +14,9 @@ import kotlin.collections.ArrayDeque
 import kotlin.collections.buildList
 
 /**
- * The GameEngine is the main entry point for the game.
- * It manages the game loop and the ECS world.
+ * Coordinates the main game loop, scene stack, and ECS world updates.
  *
- * @param world The ECS world containing entities and systems.
- * @param scope The coroutine scope to use for the game loop.
+ * Typically created by [KolliderGameBuilder]. You rarely need to instantiate this manually.
  */
 @Suppress("UNUSED")
 @OptIn(InternalCoroutinesApi::class)
@@ -36,14 +34,35 @@ class GameEngine(
     private val pendingSceneOps = ArrayDeque<SceneOp>()
     private val sceneLock = SynchronizedObject()
 
+    /**
+     * Currently active scene at the top of the stack, or `null` if none are active.
+     *
+     * ```kotlin
+     * val scene = engine.currentScene
+     * ```
+     */
     val currentScene: Scene?
         get() = synchronized(sceneLock) { sceneStack.lastOrNull()?.scene }
 
+    /**
+     * Connects the engine with the surrounding [GameContext]. Must be invoked before calling [start].
+     *
+     * ```kotlin
+     * engine.attachContext(context)
+     * ```
+     */
     fun attachContext(context: GameContext) {
         this.context = context
         flushSceneOps()
     }
 
+    /**
+     * Starts the main loop as a coroutine on the supplied [scope].
+     *
+     * ```kotlin
+     * engine.start()
+     * ```
+     */
     fun start() {
         gameJob = scope.launch {
             var lastTime = clock.getNanoTime()
@@ -70,21 +89,33 @@ class GameEngine(
 
 
     /**
-     * Pauses the game.
+     * Pauses all systems. The main loop continues running.
+     *
+     * ```kotlin
+     * engine.pause()
+     * ```
      */
     fun pause() {
         world.pause()
     }
 
     /**
-     * Resumes the game.
+     * Resumes all systems after a pause.
+     *
+     * ```kotlin
+     * engine.resume()
+     * ```
      */
     fun resume() {
         world.resume()
     }
 
     /**
-     * Stops the game.
+     * Stops the loop, disposes the world, and clears any active scenes.
+     *
+     * ```kotlin
+     * engine.stop()
+     * ```
      */
     fun stop() {
         running = false
@@ -94,34 +125,72 @@ class GameEngine(
     }
 
     /**
-     * Resizes the game window.
+     * Forwards a resize event to all systems.
+     *
+     * ```kotlin
+     * engine.resize(width, height)
+     * ```
      */
     fun resize(width: Int, height: Int) {
         world.resize(width, height)
     }
 
+    /**
+     * Pushes a new [scene] on top of the stack, pausing the current one if present.
+     *
+     * ```kotlin
+     * engine.pushScene(MainMenuScene())
+     * ```
+     */
     fun pushScene(scene: Scene) {
         enqueueSceneOp(SceneOp.Push(scene))
     }
 
+    /**
+     * Pops the current scene, resuming the previous one if available.
+     *
+     * ```kotlin
+     * engine.popScene()
+     * ```
+     */
     fun popScene() {
         enqueueSceneOp(SceneOp.Pop)
     }
 
+    /**
+     * Replaces the current scene with [scene] in a single operation.
+     *
+     * ```kotlin
+     * engine.replaceScene(GameplayScene())
+     * ```
+     */
     fun replaceScene(scene: Scene) {
         enqueueSceneOp(SceneOp.Replace(scene))
     }
 
+    /**
+     * Clears the entire scene stack.
+     *
+     * ```kotlin
+     * engine.clearScenes()
+     * ```
+     */
     fun clearScenes() {
         enqueueSceneOp(SceneOp.Clear)
     }
 
+    /**
+     * Adds a scene operation to the queue. Executed on the next loop iteration.
+     */
     private fun enqueueSceneOp(op: SceneOp) {
         synchronized(sceneLock) {
             pendingSceneOps.addLast(op)
         }
     }
 
+    /**
+     * Drains queued scene operations while holding the lock to maintain order.
+     */
     private fun drainPendingSceneOps(): List<SceneOp> {
         synchronized(sceneLock) {
             if (pendingSceneOps.isEmpty()) return emptyList()
@@ -133,6 +202,9 @@ class GameEngine(
         }
     }
 
+    /**
+     * Executes queued scene operations, invoking lifecycle hooks as needed.
+     */
     private fun flushSceneOps() {
         val ctx = context ?: return
         val ops = drainPendingSceneOps()
@@ -170,6 +242,9 @@ class GameEngine(
         }
     }
 
+    /**
+     * Immediately clears the scene stack and associated scopes.
+     */
     private fun clearScenesImmediate() {
         synchronized(sceneLock) {
             pendingSceneOps.clear()
@@ -181,6 +256,9 @@ class GameEngine(
         }
     }
 
+    /**
+     * Safe helper for reading the current scene entry while holding the lock.
+     */
     private fun currentSceneEntry(): SceneEntry? = synchronized(sceneLock) { sceneStack.lastOrNull() }
 
     private sealed interface SceneOp {

@@ -1,15 +1,16 @@
 package com.kollider.engine.ecs.input
 
 /**
- * A simple interface representing a discrete action.
+ * Represents a discrete, nameable input action (e.g., "Jump" or "Pause").
+ *
+ * Implementations can be simple objects or enums.
  */
 interface Action {
     val name: String
 }
 
 /**
- * A minimal set of built-in actions.
- * Developers can define additional actions as needed.
+ * Built-in actions used by the sample games. Create your own to extend the input map.
  */
 object Shoot : Action { override val name = "Shoot" }
 object Pause : Action { override val name = "Pause" }
