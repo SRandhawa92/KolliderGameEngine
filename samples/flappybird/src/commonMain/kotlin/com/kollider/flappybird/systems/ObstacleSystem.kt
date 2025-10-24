@@ -4,9 +4,9 @@ import com.kollider.engine.core.GameConfig
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.require
-import com.kollider.engine.ecs.withAll
 import com.kollider.flappybird.FlappyBirdGameState
 import com.kollider.flappybird.components.ObstacleComponent
 import com.kollider.flappybird.prefabs.obstacle
@@ -25,11 +25,16 @@ class ObstacleSystem(
     private val speed: Float,
     private val spawnIntervalSeconds: Float,
     private val gapPadding: Float,
-    private val world: World,
+    override val world: World,
     private val config: GameConfig,
     private val state: FlappyBirdGameState,
 ): System() {
     private var timeSinceLastObstacle = 0f
+    private lateinit var obstacleView: EntityView
+
+    override fun onAttach(world: World) {
+        obstacleView = world.view(ObstacleComponent::class)
+    }
 
     override fun update(entities: List<Entity>, deltaTime: Float) {
         if (!state.isRunning) {
@@ -40,7 +45,7 @@ class ObstacleSystem(
         timeSinceLastObstacle += deltaTime
 
         // Spawn new obstacles and remove old ones that are out of the screen
-        entities.withAll(ObstacleComponent::class).forEach { obstacle ->
+        obstacleView.forEach { obstacle ->
             val position = obstacle.require<Position>()
 
             // Remove obstacle if it's out of the screen

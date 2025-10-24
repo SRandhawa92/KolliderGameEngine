@@ -13,7 +13,7 @@ fun World.startMenuSystem(config: GameConfig) {
 }
 
 class StartMenuSystem(
-    private val world: World,
+    override val world: World,
     private val config: GameConfig
 ) : System() {
 

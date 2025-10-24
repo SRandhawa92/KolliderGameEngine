@@ -4,13 +4,13 @@ import com.kollider.engine.core.GameConfig
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.CollisionType
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.engine.ecs.require
-import com.kollider.engine.ecs.withAll
 import com.kollider.flappybird.FlappyBirdGameState
 import com.kollider.flappybird.components.BirdComponent
 import com.kollider.flappybird.components.ObstacleComponent
@@ -34,6 +34,14 @@ class BirdSystem(
     override val world: World,
     private val state: FlappyBirdGameState,
 ): System() {
+    private lateinit var birdView: EntityView
+    private lateinit var obstacleView: EntityView
+
+    override fun onAttach(world: World) {
+        birdView = world.view(BirdComponent::class)
+        obstacleView = world.view(ObstacleComponent::class)
+    }
+
     override fun update(entities: List<Entity>, deltaTime: Float) {
         if (!state.isRunning) {
             if (state.tickRestart(deltaTime)) {
@@ -44,7 +52,7 @@ class BirdSystem(
 
         var hitObstacle = false
 
-        entities.withAll(BirdComponent::class).forEach { bird ->
+        birdView.forEach { bird ->
             val velocity = bird.require<Velocity>()
             val input = bird.require<InputComponent>()
             val collider = bird.require<Collider>()
@@ -77,14 +85,14 @@ class BirdSystem(
     }
 
     private fun freezeWorld(entities: List<Entity>) {
-        entities.withAll(ObstacleComponent::class).forEach { obstacle ->
+        obstacleView.forEach { obstacle ->
             obstacle.get(Velocity::class)?.apply {
                 vx = 0f
                 vy = 0f
             }
         }
 
-        entities.withAll(BirdComponent::class).forEach { bird ->
+        birdView.forEach { bird ->
             bird.get(Velocity::class)?.apply {
                 vx = 0f
                 vy = 0f
@@ -94,11 +102,9 @@ class BirdSystem(
 
     private fun restartRun(entities: List<Entity>) {
         // Remove existing obstacles.
-        entities.withAll(ObstacleComponent::class)
-            .toList()
-            .forEach { world.removeEntity(it) }
+        obstacleView.toList().forEach { world.removeEntity(it) }
 
-        val bird = entities.withAll(BirdComponent::class).firstOrNull()
+        val bird = birdView.toList().firstOrNull()
         if (bird == null) {
             world.bird(config)
             state.markRestarted()

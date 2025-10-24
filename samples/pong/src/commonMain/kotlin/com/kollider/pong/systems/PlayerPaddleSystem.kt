@@ -3,12 +3,12 @@ package com.kollider.pong.systems
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.CollisionType
 import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.engine.ecs.require
-import com.kollider.engine.ecs.withAll
 import com.kollider.pong.components.PlayerPaddleComponent
 
 fun World.playerPaddleSystem(paddleSpeed: Float) {
@@ -22,10 +22,15 @@ fun World.playerPaddleSystem(paddleSpeed: Float) {
 class PlayerPaddleSystem(
     private val paddleSpeed: Float
 ) : System() {
+    private lateinit var playerView: EntityView
+
+    override fun onAttach(world: World) {
+        playerView = world.view(PlayerPaddleComponent::class, InputComponent::class)
+    }
+
     override fun update(entities: List<Entity>, deltaTime: Float) {
         // Process each entity that has an InputComponent and a PlayerPaddleComponent.
-        entities.withAll(PlayerPaddleComponent::class, InputComponent::class)
-            .forEach { entity ->
+        playerView.forEach { entity ->
                 val input = entity.require<InputComponent>()
                 val velocity = entity.require<Velocity>()
                 val collider = entity.require<Collider>()
