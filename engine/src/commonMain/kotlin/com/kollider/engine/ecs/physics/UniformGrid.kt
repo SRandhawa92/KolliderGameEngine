@@ -52,15 +52,13 @@ class UniformGrid(
         pairBuffer.clear()
 
         // For each bucket, emit unique pairs within the bucket
-        buckets.values.forEach { list ->
-            val size = list.size
-            if (size <= 1) return@forEach
-            // local pair gen (intra-bucket)
-            for (i in 0 until size - 1) {
-                val a = list[i]
-                for (j in i + 1 until size) {
-                    val b = list[j]
-                    pairBuffer.add(a to b)
+        for (bucket in buckets.values) {
+            val n = bucket.size
+            for (i in 0 until n) {
+                val a = bucket[i]
+                for (j in i + 1 until n) {
+                    val b = bucket[j]
+                    pairBuffer.add(Pair(a, b))
                 }
             }
         }
