@@ -1,7 +1,7 @@
 package com.kollider.pong.prefabs
 
 import com.kollider.engine.core.GameConfig
-import com.kollider.engine.ecs.World
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.pong.components.ScoreComponent
@@ -15,8 +15,8 @@ internal fun formatScoreText(player: Int, computer: Int): String =
 /**
  * Spawns a scoreboard that keeps track of both player and computer points.
  */
-fun World.scoreboard(config: GameConfig) {
-    createEntity().apply {
+fun SceneScope.scoreboard(config: GameConfig) {
+    createEntity {
         add(Position(config.width / 2f - 130f, 24f))
         add(Drawable.Text(formatScoreText(0, 0), SCORE_TEXT_SIZE, SCORE_COLOR))
         add(ScoreComponent())

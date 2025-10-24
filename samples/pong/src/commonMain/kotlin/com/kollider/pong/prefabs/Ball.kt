@@ -1,15 +1,15 @@
 package com.kollider.pong.prefabs
 
 import com.kollider.engine.core.GameConfig
-import com.kollider.engine.ecs.World
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.pong.components.BallComponent
 
-fun World.ball(config: GameConfig) {
-    createEntity().apply {
+fun SceneScope.ball(config: GameConfig) {
+    createEntity {
         // Place the ball in the center of the screen.
         add(Position(config.width / 2f, config.height / 2f))
 

@@ -1,6 +1,7 @@
 package com.kollider.pong.systems
 
 import com.kollider.engine.core.GameConfig
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
@@ -9,14 +10,17 @@ import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.input.Shoot
 import com.kollider.engine.ecs.require
 import com.kollider.pong.components.StartButtonComponent
-import com.kollider.pong.levels.pongLevel
 
-fun World.startMenuSystem(config: GameConfig) {
-    addSystem(StartMenuSystem(config))
+fun SceneScope.startMenuSystem(
+    config: GameConfig,
+    onStart: () -> Unit
+) {
+    addSystem(StartMenuSystem(config, onStart))
 }
 
 class StartMenuSystem(
-    private val config: GameConfig
+    private val config: GameConfig,
+    private val onStart: () -> Unit
 ) : System() {
     private lateinit var startButtons: EntityView
     private var startClicked = false
@@ -37,10 +41,7 @@ class StartMenuSystem(
         if (startInput.shoot) {
             startClicked = true
             config.inputRouter.clearAction(Shoot)
-            val gameWorld = world
-            gameWorld.removeEntity(startButton)
-            gameWorld.removeSystem(this)
-            gameWorld.pongLevel(config)
+            onStart()
         }
     }
 }

@@ -3,21 +3,18 @@ package com.kollider.pong
 import com.kollider.engine.core.Game
 import com.kollider.engine.core.GameContext
 import com.kollider.engine.core.createKolliderGame
-import com.kollider.pong.levels.startMenuLevel
-import com.kollider.pong.prefabs.ball
-import com.kollider.pong.prefabs.computerPaddle
-import com.kollider.pong.prefabs.playerPaddle
-import com.kollider.pong.systems.BallSystem
-import com.kollider.pong.systems.ComputerPaddleSystem
-import com.kollider.pong.systems.PlayerPaddleSystem
-import com.kollider.pong.systems.startMenuSystem
+import com.kollider.pong.scenes.PongStartMenuScene
 
 /**
  * A simple Pong game.
  *
  * @param context the game context.
  */
-class Pong(context: GameContext): Game(context) {
+class Pong(private val context: GameContext) : Game(context) {
+
+    init {
+        context.engine.pushScene(PongStartMenuScene(context.config))
+    }
 
     companion object {
         /**
@@ -29,7 +26,6 @@ class Pong(context: GameContext): Game(context) {
                 width = screenWidth
                 height = screenHeight
             }.start { gameContext ->
-                gameContext.world.startMenuLevel(gameContext.config)
                 Pong(gameContext)
             }
         }

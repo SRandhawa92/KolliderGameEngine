@@ -1,5 +1,6 @@
 package com.kollider.pong.systems
 
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
@@ -10,7 +11,7 @@ import com.kollider.pong.components.BallComponent
 import com.kollider.pong.components.ComputerPaddleComponent
 import com.kollider.engine.ecs.require
 
-fun World.computerPaddleSystem(paddleSpeed: Float) {
+fun SceneScope.computerPaddleSystem(paddleSpeed: Float) {
     addSystem(ComputerPaddleSystem(paddleSpeed))
 }
 

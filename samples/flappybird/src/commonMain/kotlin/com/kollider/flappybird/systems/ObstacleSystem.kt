@@ -1,17 +1,18 @@
 package com.kollider.flappybird.systems
 
 import com.kollider.engine.core.GameConfig
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
-import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.require
 import com.kollider.flappybird.FlappyBirdGameState
 import com.kollider.flappybird.components.ObstacleComponent
 import com.kollider.flappybird.prefabs.obstacle
 
-fun World.obstacleSystem(
+fun SceneScope.obstacleSystem(
     speed: Float,
     spawnIntervalSeconds: Float,
     gapPadding: Float,

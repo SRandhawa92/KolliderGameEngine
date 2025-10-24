@@ -2,6 +2,8 @@ package com.kollider.flappybird.prefabs
 
 import com.kollider.engine.assets.onReady
 import com.kollider.engine.core.GameConfig
+import com.kollider.engine.core.SceneScope
+import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.input.Shoot
@@ -14,7 +16,16 @@ import com.kollider.flappybird.components.BirdComponent
 
 private const val BIRD_SPRITE_URL = "https://www.pikpng.com/pngl/b/305-3050375_this-free-icons-png-design-of-flying-game.png"
 
+fun SceneScope.bird(config: GameConfig) {
+    val bird = createBirdEntity(worldRef, config)
+    track(bird)
+}
+
 fun World.bird(config: GameConfig) {
+    createBirdEntity(this, config)
+}
+
+private fun createBirdEntity(world: World, config: GameConfig): Entity {
     val birdSprite = UrlSpriteSheetAsset(
         name = "birdSprite",
         config = config,
@@ -23,7 +34,7 @@ fun World.bird(config: GameConfig) {
         cols = 4
     )
 
-    val bird = createEntity()
+    val bird = world.createEntity()
 
     bird.add(BirdComponent())
     bird.add(Position(100f, config.height / 2f))
@@ -50,4 +61,6 @@ fun World.bird(config: GameConfig) {
             )
         )
     }
+
+    return bird
 }

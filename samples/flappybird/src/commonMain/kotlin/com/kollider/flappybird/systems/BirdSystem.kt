@@ -1,10 +1,11 @@
 package com.kollider.flappybird.systems
 
 import com.kollider.engine.core.GameConfig
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
-import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.CollisionType
@@ -18,7 +19,7 @@ import com.kollider.flappybird.prefabs.bird
 
 private const val BIRD_START_X = 100f
 
-fun World.birdSystem(
+fun SceneScope.birdSystem(
     jumpSpeed: Float,
     gravity: Float,
     config: GameConfig,

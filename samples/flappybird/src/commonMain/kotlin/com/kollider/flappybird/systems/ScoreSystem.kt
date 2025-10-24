@@ -1,5 +1,6 @@
 package com.kollider.flappybird.systems
 
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
@@ -14,7 +15,7 @@ import com.kollider.flappybird.components.ObstacleComponent
 import com.kollider.flappybird.components.ScoreComponent
 import com.kollider.flappybird.prefabs.formatScoreText
 
-fun World.scoreSystem(state: FlappyBirdGameState) {
+fun SceneScope.scoreSystem(state: FlappyBirdGameState) {
     addSystem(ScoreSystem(state))
 }
 

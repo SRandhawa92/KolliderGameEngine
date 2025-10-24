@@ -1,7 +1,7 @@
 package com.kollider.pong.levels
 
 import com.kollider.engine.core.GameConfig
-import com.kollider.engine.ecs.World
+import com.kollider.engine.core.SceneScope
 import com.kollider.pong.prefabs.ball
 import com.kollider.pong.prefabs.computerPaddle
 import com.kollider.pong.prefabs.playerPaddle
@@ -10,7 +10,7 @@ import com.kollider.pong.systems.ballSystem
 import com.kollider.pong.systems.computerPaddleSystem
 import com.kollider.pong.systems.playerPaddleSystem
 
-fun World.pongLevel(config: GameConfig) {
+fun SceneScope.pongLevel(config: GameConfig) {
     ball(config)
     playerPaddle(config)
     computerPaddle(config)

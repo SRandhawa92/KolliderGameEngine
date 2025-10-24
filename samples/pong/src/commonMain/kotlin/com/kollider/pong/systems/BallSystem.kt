@@ -1,5 +1,6 @@
 package com.kollider.pong.systems
 
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
@@ -16,7 +17,7 @@ import com.kollider.pong.prefabs.formatScoreText
 import kotlin.math.abs
 import kotlin.math.sqrt
 
-fun World.ballSystem(
+fun SceneScope.ballSystem(
     worldLeft: Float,
     worldTop: Float,
     worldRight: Float,

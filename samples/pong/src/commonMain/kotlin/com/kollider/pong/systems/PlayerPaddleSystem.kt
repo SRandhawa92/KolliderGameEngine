@@ -1,9 +1,10 @@
 package com.kollider.pong.systems
 
+import com.kollider.engine.core.SceneScope
 import com.kollider.engine.ecs.Entity
+import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
-import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.input.InputComponent
 import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.CollisionType
@@ -11,7 +12,7 @@ import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.engine.ecs.require
 import com.kollider.pong.components.PlayerPaddleComponent
 
-fun World.playerPaddleSystem(paddleSpeed: Float) {
+fun SceneScope.playerPaddleSystem(paddleSpeed: Float) {
     addSystem(PlayerPaddleSystem(paddleSpeed))
 }
 
