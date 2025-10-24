@@ -30,12 +30,14 @@ class GameEngine(
     private val clock = createGameClock()
     private var gameJob: Job? = null
     private var context: GameContext? = null
-    private val sceneStack = ArrayDeque<Scene>()
+    private data class SceneEntry(val scene: Scene, val scope: SceneScope)
+
+    private val sceneStack = ArrayDeque<SceneEntry>()
     private val pendingSceneOps = ArrayDeque<SceneOp>()
     private val sceneLock = SynchronizedObject()
 
     val currentScene: Scene?
-        get() = synchronized(sceneLock) { sceneStack.lastOrNull() }
+        get() = synchronized(sceneLock) { sceneStack.lastOrNull()?.scene }
 
     fun attachContext(context: GameContext) {
         this.context = context
@@ -51,8 +53,10 @@ class GameEngine(
                 val deltaTime = (now - lastTime) / 1_000_000_000f
                 lastTime = now
 
-                 flushSceneOps()
-                 currentScene?.onUpdate(deltaTime)
+                flushSceneOps()
+                currentSceneEntry()?.let { (scene, scope) ->
+                    scene.onUpdate(deltaTime, scope)
+                }
                 // Update game objects via the ECS.
                 world.update(deltaTime)
 
@@ -136,20 +140,30 @@ class GameEngine(
         ops.forEach { op ->
             when (op) {
                 is SceneOp.Push -> {
-                    sceneStack.addLast(op.scene)
-                    op.scene.onEnter(ctx)
+                    val scope = SceneScope(ctx, world)
+                    sceneStack.addLast(SceneEntry(op.scene, scope))
+                    op.scene.onEnter(scope)
                 }
                 SceneOp.Pop -> {
-                    sceneStack.removeLastOrNull()?.onExit()
+                    sceneStack.removeLastOrNull()?.let { entry ->
+                        entry.scene.onExit(entry.scope)
+                        entry.scope.dispose()
+                    }
                 }
                 is SceneOp.Replace -> {
-                    sceneStack.removeLastOrNull()?.onExit()
-                    sceneStack.addLast(op.scene)
-                    op.scene.onEnter(ctx)
+                    sceneStack.removeLastOrNull()?.let { entry ->
+                        entry.scene.onExit(entry.scope)
+                        entry.scope.dispose()
+                    }
+                    val scope = SceneScope(ctx, world)
+                    sceneStack.addLast(SceneEntry(op.scene, scope))
+                    op.scene.onEnter(scope)
                 }
                 SceneOp.Clear -> {
                     while (sceneStack.isNotEmpty()) {
-                        sceneStack.removeLast().onExit()
+                        val entry = sceneStack.removeLast()
+                        entry.scene.onExit(entry.scope)
+                        entry.scope.dispose()
                     }
                 }
             }
@@ -160,10 +174,14 @@ class GameEngine(
         synchronized(sceneLock) {
             pendingSceneOps.clear()
             while (sceneStack.isNotEmpty()) {
-                sceneStack.removeLast().onExit()
+                val entry = sceneStack.removeLast()
+                entry.scene.onExit(entry.scope)
+                entry.scope.dispose()
             }
         }
     }
+
+    private fun currentSceneEntry(): SceneEntry? = synchronized(sceneLock) { sceneStack.lastOrNull() }
 
     private sealed interface SceneOp {
         data class Push(val scene: Scene) : SceneOp

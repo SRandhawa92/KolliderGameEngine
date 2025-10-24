@@ -5,6 +5,7 @@ import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.input.InputComponent
+import com.kollider.engine.ecs.input.Shoot
 import com.kollider.pong.components.StartButtonComponent
 import com.kollider.pong.levels.pongLevel
 
@@ -28,6 +29,7 @@ class StartMenuSystem(
 
             if (startInput.shoot) {
                 startClicked = true
+                config.inputRouter.clearAction(Shoot)
                 world.removeEntity(startButton)
                 world.removeSystem(this)
                 world.pongLevel(config)

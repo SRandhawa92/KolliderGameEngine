@@ -53,7 +53,7 @@ fun createWorld(
     config: GameConfig,
 ): World {
     val world = World()
-    world.addSystem(InputSystem(inputHandler))
+    world.addSystem(InputSystem(inputHandler, config.inputRouter))
     world.addSystem(PhysicsSystem())
     world.addSystem(CollisionSystem(config.worldBounds))
     world.addSystem(RenderSystem(renderer))

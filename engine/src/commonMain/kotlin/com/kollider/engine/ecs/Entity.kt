@@ -1,5 +1,6 @@
 package com.kollider.engine.ecs
 
+import com.kollider.engine.ecs.input.InputComponent
 import kotlin.reflect.KClass
 
 /**
@@ -16,6 +17,9 @@ class Entity(val id: Int) {
      */
     fun <T : Component> add(component: T): Entity {
         val type = component::class
+        if (component is InputComponent) {
+            component.ownerEntityId = id
+        }
         components[type] = component
         observer?.onComponentAdded(this, type)
         return this
