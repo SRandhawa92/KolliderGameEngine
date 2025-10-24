@@ -8,8 +8,11 @@ import com.kollider.engine.ecs.physics.Collider
 import com.kollider.engine.ecs.physics.CollisionType
 import com.kollider.engine.ecs.physics.Position
 import com.kollider.engine.ecs.physics.Velocity
-import com.kollider.pong.components.BallComponent
+import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.engine.ecs.require
+import com.kollider.pong.components.BallComponent
+import com.kollider.pong.components.ScoreComponent
+import com.kollider.pong.prefabs.formatScoreText
 import kotlin.math.abs
 import kotlin.math.sqrt
 
@@ -53,6 +56,7 @@ class BallSystem(
     private val hitSpeedIncrement: Float = 12f
 ) : System() {
     private lateinit var ballView: EntityView
+    private lateinit var scoreView: EntityView
 
     // toggles to make serves deterministic without RNG
     private var serveRightNext = true
@@ -64,6 +68,7 @@ class BallSystem(
             Velocity::class,
             Collider::class,
         )
+        scoreView = world.view(ScoreComponent::class, Drawable::class)
     }
 
     @Suppress("UNUSED_PARAMETER")
@@ -149,6 +154,8 @@ class BallSystem(
 
             // Handle scoring (TOP/BOTTOM) after consuming all events
             if (scoredTop || scoredBottom) {
+                updateScores(scoredTop, scoredBottom)
+
                 // center the ball
                 val cx = (worldLeft + worldRight) * 0.5f
                 val cy = (worldTop + worldBottom) * 0.5f
@@ -164,6 +171,26 @@ class BallSystem(
 
             // keep speed within bounds (guard against drift)
             clampSpeed(vel, min = initialSpeed, max = maxSpeed)
+        }
+    }
+
+    private fun updateScores(playerScored: Boolean, computerScored: Boolean) {
+        if (!playerScored && !computerScored) return
+
+        val iterator = scoreView.iterator()
+        if (!iterator.hasNext()) return
+
+        val scoreEntity = iterator.next()
+        val score = scoreEntity.require<ScoreComponent>()
+        if (playerScored) score.player += 1
+        if (computerScored) score.computer += 1
+
+        val drawable = scoreEntity.get(Drawable::class)
+        if (drawable is Drawable.Text) {
+            val text = formatScoreText(score.player, score.computer)
+            if (drawable.text != text) {
+                scoreEntity.add(drawable.copy(text = text))
+            }
         }
     }
 
