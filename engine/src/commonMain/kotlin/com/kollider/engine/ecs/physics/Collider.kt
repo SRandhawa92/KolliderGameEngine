@@ -19,7 +19,8 @@ enum class CollisionType {
  */
 data class CollisionEvent(
     val type: CollisionType,
-    val entity: Entity? = null // null for boundary collisions
+    val entity: Entity? = null, // null for boundary collisions
+    val other: Entity? = null // the other entity involved in the collision, if applicable
 )
 
 /**

@@ -14,7 +14,7 @@ fun World.pongLevel(config: GameConfig) {
     playerPaddle(config)
     computerPaddle(config)
 
-    ballSystem(config.width, config.height)
+    ballSystem(0f, 0f, config.width.toFloat(), config.height.toFloat())
     playerPaddleSystem(150f)
     computerPaddleSystem(250f)
 }

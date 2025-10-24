@@ -31,8 +31,8 @@ class CollisionSystem(private val worldBounds: Drawable.Rect) : System() {
             val cb = b.get(Collider::class)!!
 
             if (aabbIntersects(pa.x, pa.y, ca.width, ca.height, pb.x, pb.y, cb.width, cb.height)) {
-                ca.collisions.add(CollisionEvent(CollisionType.ENTITY, b))
-                cb.collisions.add(CollisionEvent(CollisionType.ENTITY, a))
+                ca.collisions.add(CollisionEvent(CollisionType.ENTITY, b, a))
+                cb.collisions.add(CollisionEvent(CollisionType.ENTITY, a, b))
                 // Optional: resolve penetration + velocity response here or in a separate ResolutionSystem
             }
         }

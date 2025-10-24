@@ -1,7 +1,6 @@
 package com.kollider.engine.ecs.rendering
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
+import com.kollider.engine.core.GameConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,9 +23,8 @@ abstract class SpriteAsset {
 }
 
 class UrlSpriteSheetAsset(
-    dispatcher: CoroutineDispatcher = Dispatchers.Default,
-    scope: CoroutineScope = CoroutineScope(dispatcher),
     override val name: String,
+    config: GameConfig,
     imageUrl: String,
     rows: Int? = null,
     cols: Int? = null,
@@ -35,7 +33,7 @@ class UrlSpriteSheetAsset(
     override var frames: List<Any>? = null
 
     init {
-        scope.launch(dispatcher) {
+        config.scope.launch(Dispatchers.Default) {
             image = loadImageFromUrl(imageUrl)
             frames = getFrameFromSpriteSheet(image, rows, cols)
         }

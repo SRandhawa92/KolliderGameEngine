@@ -14,6 +14,7 @@ fun World.bird(config: GameConfig) {
 
     val birdSprite = UrlSpriteSheetAsset(
         name = "birdSprite",
+        config = config,
         imageUrl = "https://www.pikpng.com/pngl/b/305-3050375_this-free-icons-png-design-of-flying-game.png",
         rows = 2,
         cols = 4
