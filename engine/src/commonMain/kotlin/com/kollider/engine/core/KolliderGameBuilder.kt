@@ -5,7 +5,9 @@ import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.input.InputHandler
 import com.kollider.engine.ecs.input.InputSystem
 import com.kollider.engine.ecs.input.createInputHandler
+import com.kollider.engine.ecs.physics.CollisionSystem
 import com.kollider.engine.ecs.physics.PhysicsSystem
+import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.engine.ecs.rendering.RenderSystem
 import com.kollider.engine.ecs.rendering.Renderer
 import com.kollider.engine.ecs.rendering.createCanvas
@@ -53,7 +55,8 @@ fun createWorld(
 ): World {
     val world = World()
     world.addSystem(InputSystem(inputHandler))
-    world.addSystem(PhysicsSystem(config.width, config.height))
+    world.addSystem(PhysicsSystem())
+    world.addSystem(CollisionSystem(Drawable.Rect(config.width.toFloat(), config.height.toFloat(),0, 0f, 0f)))
     world.addSystem(RenderSystem(renderer))
     return world
 }
