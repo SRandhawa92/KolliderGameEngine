@@ -31,7 +31,7 @@ class BirdSystem(
     private val jumpSpeed: Float,
     private val gravity: Float,
     private val config: GameConfig,
-    private val world: World,
+    override val world: World,
     private val state: FlappyBirdGameState,
 ): System() {
     override fun update(entities: List<Entity>, deltaTime: Float) {
