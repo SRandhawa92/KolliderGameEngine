@@ -70,7 +70,7 @@ fun createWorld(
     world.addSystem(InputSystem(inputHandler, config.inputRouter))
     world.addSystem(PhysicsSystem())
     world.addSystem(CollisionSystem(config.worldBounds))
-    world.addSystem(RenderSystem(renderer))
+    world.addSystem(RenderSystem(renderer, config))
     return world
 }
 

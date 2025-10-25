@@ -7,7 +7,7 @@ import com.kollider.engine.ecs.input.InputHandler
  *
  * ```kotlin
  * val renderer = createRenderer(canvas, inputHandler)
- * world.addSystem(RenderSystem(renderer))
+ * world.addSystem(RenderSystem(renderer, config))
  * ```
  */
 expect fun createRenderer(canvas: Canvas, inputHandler: InputHandler): Renderer

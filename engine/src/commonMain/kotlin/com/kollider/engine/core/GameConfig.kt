@@ -27,7 +27,21 @@ data class GameConfig(
     var scope: CoroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob()),
     val assets: AssetManager = AssetManager(scope),
     val inputRouter: InputRouter = InputRouter(),
+    var renderWidthOverride: Int? = null,
+    var renderHeightOverride: Int? = null,
 ) {
+    /**
+     * Width in pixels used by the renderer. Falls back to [width] when no override is provided.
+     */
+    val renderWidth: Int
+        get() = renderWidthOverride ?: width
+
+    /**
+     * Height in pixels used by the renderer. Falls back to [height] when no override is provided.
+     */
+    val renderHeight: Int
+        get() = renderHeightOverride ?: height
+
     /**
      * Convenience property that exposes the playable area's bounds.
      *

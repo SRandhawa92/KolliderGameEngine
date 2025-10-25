@@ -3,6 +3,7 @@ package com.kollider.pong
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import com.kollider.engine.core.AppContext
+import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,10 +13,18 @@ class MainActivity : ComponentActivity() {
         AppContext.apply { set(this@MainActivity) }
 
         // calculate the screen height and width
-        val screenHeight = resources.displayMetrics.heightPixels
-        val screenWidth = resources.displayMetrics.widthPixels
+        val metrics = resources.displayMetrics
+        val screenHeight = metrics.heightPixels
+        val screenWidth = metrics.widthPixels
+        val virtualWidth = (screenWidth / metrics.density).roundToInt().coerceAtLeast(1)
+        val virtualHeight = (screenHeight / metrics.density).roundToInt().coerceAtLeast(1)
 
         // start the game
-        Pong.createGame(screenHeight = screenHeight, screenWidth = screenWidth)
+        Pong.createGame(
+            virtualWidth = virtualWidth,
+            virtualHeight = virtualHeight,
+            renderWidth = screenWidth,
+            renderHeight = screenHeight,
+        )
     }
 }

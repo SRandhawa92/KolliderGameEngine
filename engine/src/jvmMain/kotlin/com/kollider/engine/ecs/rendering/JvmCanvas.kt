@@ -8,7 +8,7 @@ import javax.swing.JPanel
 import javax.swing.SwingUtilities
 
 actual fun createCanvas(config: GameConfig): Canvas {
-    return JvmCanvas(config.width, config.height)
+    return JvmCanvas(config.renderWidth, config.renderHeight)
 }
 
 class JvmCanvas(

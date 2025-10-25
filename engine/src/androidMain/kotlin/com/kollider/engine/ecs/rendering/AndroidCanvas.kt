@@ -11,8 +11,8 @@ import com.kollider.engine.ecs.input.AndroidInputHandler
 actual fun createCanvas(config: GameConfig): Canvas {
     return AndroidCanvas(
         context = config.appContext.get()!!,
-        canvasHeight = config.height,
-        canvasWidth = config.width
+        canvasHeight = config.renderHeight,
+        canvasWidth = config.renderWidth
     )
 }
 

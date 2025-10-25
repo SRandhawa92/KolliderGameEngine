@@ -9,7 +9,7 @@ import kotlin.reflect.KClass
  *
  * ```kotlin
  * val world = World()
- * world.addSystem(RenderSystem(renderer))
+ * world.addSystem(RenderSystem(renderer, config))
  * val player = world.createEntity().apply {
  *     add(Position(100f, 200f))
  *     add(PlayerComponent())

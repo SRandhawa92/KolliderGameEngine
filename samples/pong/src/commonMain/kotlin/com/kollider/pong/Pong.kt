@@ -20,11 +20,18 @@ class Pong(private val context: GameContext) : Game(context) {
         /**
          * Creates and starts the Pong game.
          */
-        fun createGame(screenHeight: Int = 800, screenWidth: Int = 600) {
+        fun createGame(
+            virtualWidth: Int = 800,
+            virtualHeight: Int = 600,
+            renderWidth: Int? = null,
+            renderHeight: Int? = null,
+        ) {
             createKolliderGame {
                 title = "Pong"
-                width = screenWidth
-                height = screenHeight
+                width = virtualWidth
+                height = virtualHeight
+                renderWidth?.let { renderWidthOverride = it }
+                renderHeight?.let { renderHeightOverride = it }
             }.start { gameContext ->
                 Pong(gameContext)
             }

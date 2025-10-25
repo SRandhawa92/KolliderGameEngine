@@ -19,12 +19,24 @@ class FlappyBird(private val context: GameContext) : Game(context) {
     companion object {
         /**
          * Creates and starts the Flappy Bird game.
+         *
+         * @param virtualWidth logical width used for gameplay measurements.
+         * @param virtualHeight logical height used for gameplay measurements.
+         * @param renderWidth optional physical render width (defaults to [virtualWidth]).
+         * @param renderHeight optional physical render height (defaults to [virtualHeight]).
          */
-        fun createGame(screenHeight: Int = 800, screenWidth: Int = 600) {
+        fun createGame(
+            virtualWidth: Int = 800,
+            virtualHeight: Int = 600,
+            renderWidth: Int? = null,
+            renderHeight: Int? = null,
+        ) {
             createKolliderGame {
                 title = "Flappy Bird"
-                width = screenWidth
-                height = screenHeight
+                width = virtualWidth
+                height = virtualHeight
+                renderWidth?.let { renderWidthOverride = it }
+                renderHeight?.let { renderHeightOverride = it }
             }.start { gameContext ->
                 FlappyBird(gameContext)
             }

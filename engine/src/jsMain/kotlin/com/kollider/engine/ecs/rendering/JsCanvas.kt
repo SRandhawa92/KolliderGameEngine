@@ -3,7 +3,7 @@ package com.kollider.engine.ecs.rendering
 import com.kollider.engine.core.GameConfig
 
 actual fun createCanvas(config: GameConfig): Canvas {
-    return JsCanvas(config.height, config.width)
+    return JsCanvas(config.renderHeight, config.renderWidth)
 }
 
 class JsCanvas(
