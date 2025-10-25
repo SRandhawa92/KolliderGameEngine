@@ -2,7 +2,7 @@
 
     <application>
         <activity
-            android:name="com.kollider.flappybird.MainActivity"
+            android:name="com.kollider.pong.MainActivity"
             android:label="Pong"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>

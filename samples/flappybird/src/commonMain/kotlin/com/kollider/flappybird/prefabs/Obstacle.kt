@@ -20,7 +20,7 @@ fun SceneScope.obstacle(speed: Float, config: GameConfig, gapPadding: Float): En
     val maxCenter = max(minCenter, config.height.toFloat() - safePadding)
     val centerY = if (maxCenter == minCenter) minCenter else Random.nextFloat() * (maxCenter - minCenter) + minCenter
     val topLeftY = (centerY - OBSTACLE_HEIGHT / 2f).coerceIn(0f, config.height.toFloat() - OBSTACLE_HEIGHT)
-    val color = 0x00228B22 // Green color for obstacle
+    val color = 0xFF228B22.toInt()      // Green color for obstacle
 
     return createEntity {
         // Marker component
