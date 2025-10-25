@@ -2,7 +2,7 @@
 <html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-    <title>start</title>
+    <title>runsWhilePaused</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
     <script>var pathToRoot = "../../../";</script>
     <script>document.documentElement.classList.replace("no-js","js");</script>
@@ -61,12 +61,12 @@
                 <div class="sidebar--inner" id="sideMenu"></div>
             </div>
             <div id="main">
-<div class="main-content" data-page-type="member" id="content" pageIds="engine::com.kollider.engine.core/KolliderGameBuilder/start/#kotlin.Function1[com.kollider.engine.core.GameContext,com.kollider.engine.core.Game]/PointingToDeclaration//-59495948">
-  <div class="breadcrumbs"><a href="../../../index.html">engine</a><span class="delimiter">/</span><a href="../index.html">com.kollider.engine.core</a><span class="delimiter">/</span><a href="index.html">KolliderGameBuilder</a><span class="delimiter">/</span><span class="current">start</span></div>
+<div class="main-content" data-page-type="member" id="content" pageIds="engine::com.kollider.engine.ecs.rendering/RenderSystem/runsWhilePaused/#/PointingToDeclaration//-59495948">
+  <div class="breadcrumbs"><a href="../../../index.html">engine</a><span class="delimiter">/</span><a href="../index.html">com.kollider.engine.ecs.rendering</a><span class="delimiter">/</span><a href="index.html">RenderSystem</a><span class="delimiter">/</span><span class="current">runsWhilePaused</span></div>
   <div class="cover ">
-    <h1 class="cover"><span><span>start</span></span></h1>
+    <h1 class="cover"><span>runs</span><wbr></wbr><span>While</span><wbr></wbr><span><span>Paused</span></span></h1>
   </div>
-  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">fun </span><a href="start.html"><span class="token function">start</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">gameFactory<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-game-context/index.html">GameContext</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../-game/index.html">Game</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-game-handle/index.html">GameHandle</a></div><p class="paragraph">Finalises configuration, starts the engine, and instantiates your <a href="../-game/index.html">Game</a>.</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">createKolliderGame { }<br>    .systems { }<br>    .start { context -&gt; SampleGame(context) }</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":engine:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="runs-while-paused.html">runsWhilePaused</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><p class="paragraph">Override to continue running <a href="update.html">update</a> even while the world is paused.</p></div></div>
 </div>
       <div class="footer">
         <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2025 Copyright</span><span

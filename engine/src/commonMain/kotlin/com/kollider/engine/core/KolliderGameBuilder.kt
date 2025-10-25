@@ -93,6 +93,31 @@ fun createKolliderGame(
 /**
  * Fluent builder that composes the world, systems, and game factory before launching.
  */
+class GameHandle internal constructor(
+    val context: GameContext,
+    val game: Game,
+) {
+    private val engine get() = context.engine
+
+    fun pause() {
+        engine.pause()
+    }
+
+    fun resume() {
+        engine.resume()
+    }
+
+    fun stop() {
+        engine.stop()
+    }
+
+    fun resize(width: Int, height: Int) {
+        context.config.renderWidthOverride = width
+        context.config.renderHeightOverride = height
+        engine.resize(width, height)
+    }
+}
+
 class KolliderGameBuilder(
     private val config: GameConfig,
 ) {
@@ -121,7 +146,7 @@ class KolliderGameBuilder(
      * Creates the ECS world, builds a GameContext, instantiates the game via [gameFactory],
      * and starts the GameEngine.
      *
-     * @param gameFactory the factory function for creating the game.
+     * @param (GameContext) -> Game the factory function for creating the game.
      */
     /**
      * Finalises configuration, starts the engine, and instantiates your [Game].
@@ -132,7 +157,7 @@ class KolliderGameBuilder(
      *     .start { context -> SampleGame(context) }
      * ```
      */
-    fun start(gameFactory: (GameContext) -> Game)  {
+    fun start(gameFactory: (GameContext) -> Game): GameHandle  {
         val inputHandler = createInputHandler(config)
         val canvas = createCanvas(config)
         val renderer = createRenderer(canvas, inputHandler)
@@ -149,6 +174,7 @@ class KolliderGameBuilder(
         engine.attachContext(context)
         engine.start()
 
-        gameFactory(context)
+        val game = gameFactory(context)
+        return GameHandle(context, game)
     }
 }

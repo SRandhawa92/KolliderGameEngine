@@ -23,6 +23,7 @@ class RenderSystem(
     private val renderer: Renderer,
     private val config: GameConfig,
 ) : System() {
+    override val runsWhilePaused: Boolean get() = true
     private lateinit var renderView: EntityView
     private var scale: Float = 1f
     private var offsetX: Float = 0f

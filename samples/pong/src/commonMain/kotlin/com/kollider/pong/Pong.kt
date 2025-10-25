@@ -2,6 +2,7 @@ package com.kollider.pong
 
 import com.kollider.engine.core.Game
 import com.kollider.engine.core.GameContext
+import com.kollider.engine.core.GameHandle
 import com.kollider.engine.core.createKolliderGame
 import com.kollider.pong.scenes.PongStartMenuScene
 
@@ -25,8 +26,8 @@ class Pong(private val context: GameContext) : Game(context) {
             virtualHeight: Int = 600,
             renderWidth: Int? = null,
             renderHeight: Int? = null,
-        ) {
-            createKolliderGame {
+        ): GameHandle {
+            return createKolliderGame {
                 title = "Pong"
                 width = virtualWidth
                 height = virtualHeight

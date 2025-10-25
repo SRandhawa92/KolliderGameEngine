@@ -105,7 +105,11 @@ class World : Entity.ComponentObserver {
      */
     fun update(deltaTime: Float) {
         val currentSystems = systems.toList()  // snapshot
-        currentSystems.forEach { it.update(entities, deltaTime) }
+        currentSystems.forEach { system ->
+            if (system.shouldUpdate()) {
+                system.update(entities, deltaTime)
+            }
+        }
 
         // Now apply any pending entity removals.
         if (pendingEntityRemovals.isNotEmpty()) {
@@ -165,7 +169,7 @@ class World : Entity.ComponentObserver {
      * ```
      */
     fun pause() {
-        systems.forEach { it.pause() }
+        systems.forEach { it.handlePause() }
     }
 
     /**
@@ -176,7 +180,7 @@ class World : Entity.ComponentObserver {
      * ```
      */
     fun resume() {
-        systems.forEach { it.resume() }
+        systems.forEach { it.handleResume() }
     }
 
     /**

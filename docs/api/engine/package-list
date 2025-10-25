@@ -66,6 +66,13 @@ $dokka.location:com.kollider.engine.core/GameEngine/resize/#kotlin.Int#kotlin.In
 $dokka.location:com.kollider.engine.core/GameEngine/resume/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-engine/resume.html
 $dokka.location:com.kollider.engine.core/GameEngine/start/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-engine/start.html
 $dokka.location:com.kollider.engine.core/GameEngine/stop/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-engine/stop.html
+$dokka.location:com.kollider.engine.core/GameHandle///PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/index.html
+$dokka.location:com.kollider.engine.core/GameHandle/context/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/context.html
+$dokka.location:com.kollider.engine.core/GameHandle/game/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/game.html
+$dokka.location:com.kollider.engine.core/GameHandle/pause/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/pause.html
+$dokka.location:com.kollider.engine.core/GameHandle/resize/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/resize.html
+$dokka.location:com.kollider.engine.core/GameHandle/resume/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/resume.html
+$dokka.location:com.kollider.engine.core/GameHandle/stop/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-handle/stop.html
 $dokka.location:com.kollider.engine.core/IosGameClock///PointingToDeclaration/engine/com.kollider.engine.core/-ios-game-clock/index.html
 $dokka.location:com.kollider.engine.core/IosGameClock/IosGameClock/#/PointingToDeclaration/engine/com.kollider.engine.core/-ios-game-clock/-ios-game-clock.html
 $dokka.location:com.kollider.engine.core/IosGameClock/getNanoTime/#/PointingToDeclaration/engine/com.kollider.engine.core/-ios-game-clock/get-nano-time.html
@@ -158,6 +165,7 @@ $dokka.location:com.kollider.engine.ecs.input/InputRouter/routeAction/#com.kolli
 $dokka.location:com.kollider.engine.ecs.input/InputRouter/routeMovement/#kotlin.Int?/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-input-router/route-movement.html
 $dokka.location:com.kollider.engine.ecs.input/InputSystem///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-input-system/index.html
 $dokka.location:com.kollider.engine.ecs.input/InputSystem/InputSystem/#com.kollider.engine.ecs.input.InputHandler#com.kollider.engine.ecs.input.InputRouter/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-input-system/-input-system.html
+$dokka.location:com.kollider.engine.ecs.input/InputSystem/runsWhilePaused/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-input-system/runs-while-paused.html
 $dokka.location:com.kollider.engine.ecs.input/InputSystem/update/#kotlin.collections.List[com.kollider.engine.ecs.Entity]#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-input-system/update.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/index.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler/IosInputHandler/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/-ios-input-handler.html
@@ -349,6 +357,7 @@ $dokka.location:com.kollider.engine.ecs.rendering/RenderSystem///PointingToDecla
 $dokka.location:com.kollider.engine.ecs.rendering/RenderSystem/RenderSystem/#com.kollider.engine.ecs.rendering.Renderer#com.kollider.engine.core.GameConfig/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-render-system/-render-system.html
 $dokka.location:com.kollider.engine.ecs.rendering/RenderSystem/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-render-system/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/RenderSystem/resize/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-render-system/resize.html
+$dokka.location:com.kollider.engine.ecs.rendering/RenderSystem/runsWhilePaused/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-render-system/runs-while-paused.html
 $dokka.location:com.kollider.engine.ecs.rendering/RenderSystem/update/#kotlin.collections.List[com.kollider.engine.ecs.Entity]#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-render-system/update.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/index.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/clear.html
@@ -394,6 +403,7 @@ $dokka.location:com.kollider.engine.ecs/System/dispose/#/PointingToDeclaration/
 $dokka.location:com.kollider.engine.ecs/System/pause/#/PointingToDeclaration/engine/com.kollider.engine.ecs/-system/pause.html
 $dokka.location:com.kollider.engine.ecs/System/resize/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs/-system/resize.html
 $dokka.location:com.kollider.engine.ecs/System/resume/#/PointingToDeclaration/engine/com.kollider.engine.ecs/-system/resume.html
+$dokka.location:com.kollider.engine.ecs/System/runsWhilePaused/#/PointingToDeclaration/engine/com.kollider.engine.ecs/-system/runs-while-paused.html
 $dokka.location:com.kollider.engine.ecs/System/update/#kotlin.collections.List[com.kollider.engine.ecs.Entity]#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs/-system/update.html
 $dokka.location:com.kollider.engine.ecs/World///PointingToDeclaration/engine/com.kollider.engine.ecs/-world/index.html
 $dokka.location:com.kollider.engine.ecs/World/World/#/PointingToDeclaration/engine/com.kollider.engine.ecs/-world/-world.html

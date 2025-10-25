@@ -19,6 +19,7 @@ package com.kollider.engine.ecs
  */
 abstract class System {
     private var worldRef: World? = null
+    private var paused = false
 
     /**
      * Shortcut to the [World] the system is bound to. Throws if accessed before [onAttach].
@@ -88,4 +89,25 @@ abstract class System {
      * Called when the system is resumed.
      */
     open fun resume() {}
+
+    /**
+     * Override to continue running [update] even while the world is paused.
+     */
+    open val runsWhilePaused: Boolean get() = false
+
+    internal fun handlePause() {
+        if (!paused) {
+            paused = true
+            pause()
+        }
+    }
+
+    internal fun handleResume() {
+        if (paused) {
+            paused = false
+            resume()
+        }
+    }
+
+    internal fun shouldUpdate(): Boolean = !paused || runsWhilePaused
 }

@@ -3,9 +3,12 @@ package com.kollider.pong
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import com.kollider.engine.core.AppContext
+import com.kollider.engine.core.GameHandle
 import kotlin.math.roundToInt
 
 class MainActivity : ComponentActivity() {
+    var gameHandle: GameHandle? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,11 +23,28 @@ class MainActivity : ComponentActivity() {
         val virtualHeight = (screenHeight / metrics.density).roundToInt().coerceAtLeast(1)
 
         // start the game
-        Pong.createGame(
+        gameHandle = Pong.createGame(
             virtualWidth = virtualWidth,
             virtualHeight = virtualHeight,
             renderWidth = screenWidth,
             renderHeight = screenHeight,
         )
     }
+
+    override fun onResume() {
+        super.onResume()
+        gameHandle?.resume()
+    }
+
+    override fun onPause() {
+        gameHandle?.pause()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        gameHandle?.stop()
+        gameHandle = null
+        super.onDestroy()
+    }
+
 }

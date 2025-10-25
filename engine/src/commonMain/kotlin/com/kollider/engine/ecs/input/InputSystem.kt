@@ -16,6 +16,7 @@ class InputSystem(
     private val inputHandler: InputHandler,
     private val router: InputRouter,
 ) : System() {
+    override val runsWhilePaused: Boolean get() = true
     private val dispatcher = inputHandler.dispatcher
     private val trackedComponents = mutableMapOf<Int, InputComponent>()
     private lateinit var inputView: EntityView
