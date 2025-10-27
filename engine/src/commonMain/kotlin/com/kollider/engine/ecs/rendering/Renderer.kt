@@ -1,6 +1,7 @@
 package com.kollider.engine.ecs.rendering
 
 import com.kollider.engine.ecs.input.InputHandler
+import com.kollider.engine.ecs.physics.Vector2
 
 /**
  * Creates a platform renderer bound to the [canvas] and [inputHandler].
@@ -60,6 +61,27 @@ interface Renderer {
      * ```
      */
     fun drawCircle(x: Float, y: Float, radius: Float, color: Int)
+
+    /**
+     * Draws a line segment with optional [thickness].
+     *
+     * ```kotlin
+     * renderer.drawLine(0f, 0f, 32f, 32f, thickness = 2f, color = 0xFFFFFFFF.toInt())
+     * ```
+     */
+    fun drawLine(x1: Float, y1: Float, x2: Float, y2: Float, thickness: Float, color: Int)
+
+    /**
+     * Draws a filled polygon using the provided [points].
+     *
+     * ```kotlin
+     * renderer.drawPolygon(
+     *     listOf(Vector2(0f, 0f), Vector2(32f, 0f), Vector2(16f, 32f)),
+     *     color = 0xFFFFFFFF.toInt()
+     * )
+     * ```
+     */
+    fun drawPolygon(points: List<Vector2>, color: Int)
 
     /**
      * Presents the drawn frame to the screen.

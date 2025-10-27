@@ -6,6 +6,7 @@ import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.physics.Position
+import com.kollider.engine.ecs.physics.Vector2
 import kotlin.math.min
 
 /**
@@ -141,6 +142,35 @@ class RenderSystem(
                     drawable.radius * scale,
                     drawable.color
                 )
+            }
+
+            is Drawable.Line -> {
+                val originX = baseX + drawable.offsetX
+                val originY = baseY + drawable.offsetY
+                val startX = offsetX + (originX + drawable.startX) * scale
+                val startY = offsetY + (originY + drawable.startY) * scale
+                val endX = offsetX + (originX + drawable.endX) * scale
+                val endY = offsetY + (originY + drawable.endY) * scale
+                renderer.drawLine(
+                    startX,
+                    startY,
+                    endX,
+                    endY,
+                    drawable.thickness * scale,
+                    drawable.color
+                )
+            }
+
+            is Drawable.Polygon -> {
+                val originX = baseX + drawable.offsetX
+                val originY = baseY + drawable.offsetY
+                val transformed = drawable.points.map { point ->
+                    Vector2(
+                        x = offsetX + (originX + point.x) * scale,
+                        y = offsetY + (originY + point.y) * scale,
+                    )
+                }
+                renderer.drawPolygon(transformed, drawable.color)
             }
 
             is Drawable.Text -> {

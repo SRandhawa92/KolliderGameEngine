@@ -2,10 +2,14 @@ package com.kollider.engine.ecs.rendering
 
 import com.kollider.engine.ecs.input.InputHandler
 import com.kollider.engine.ecs.input.JvmInputHandler
+import com.kollider.engine.ecs.physics.Vector2
+import java.awt.BasicStroke
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Font
 import java.awt.Graphics2D
+import java.awt.geom.Line2D
+import java.awt.geom.Path2D
 import java.awt.image.BufferedImage
 import javax.swing.JFrame
 import javax.swing.SwingUtilities
@@ -55,13 +59,13 @@ class JvmRenderer(private val canvas: JvmCanvas): Renderer {
     }
 
     override fun drawText(text: String, x: Float, y: Float, size: Float, color: Int) {
-        g2d.color = Color(color)
+        g2d.color = Color(color, true)
         g2d.font = Font("SansSerif", Font.PLAIN, size.toInt())
         g2d.drawString(text, x, y)
     }
 
     override fun drawRect(x: Float, y: Float, width: Float, height: Float, color: Int) {
-        g2d.color = Color(color)
+        g2d.color = Color(color, true)
         g2d.fillRect(x.toInt(), y.toInt(), width.toInt(), height.toInt())
     }
 
@@ -79,11 +83,33 @@ class JvmRenderer(private val canvas: JvmCanvas): Renderer {
     }
 
     override fun drawCircle(x: Float, y: Float, radius: Float, color: Int) {
-        g2d.color = Color(color)
+        g2d.color = Color(color, true)
         val topLeftX = (x - radius).toInt()
         val topLeftY = (y - radius).toInt()
         val diameter = (radius * 2).toInt()
         g2d.fillOval(topLeftX, topLeftY, diameter, diameter)
+    }
+
+    override fun drawLine(x1: Float, y1: Float, x2: Float, y2: Float, thickness: Float, color: Int) {
+        val previousStroke = g2d.stroke
+        g2d.color = Color(color, true)
+        g2d.stroke = BasicStroke(thickness)
+        g2d.draw(Line2D.Float(x1, y1, x2, y2))
+        g2d.stroke = previousStroke
+    }
+
+    override fun drawPolygon(points: List<Vector2>, color: Int) {
+        if (points.size < 3) return
+        val path = Path2D.Float()
+        val first = points.first()
+        path.moveTo(first.x, first.y)
+        for (i in 1 until points.size) {
+            val point = points[i]
+            path.lineTo(point.x, point.y)
+        }
+        path.closePath()
+        g2d.color = Color(color, true)
+        g2d.fill(path)
     }
 
     private fun updateCanvasSize(width: Int, height: Int) {

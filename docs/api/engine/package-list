@@ -261,6 +261,8 @@ $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/AndroidRendere
 $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/clear.html
 $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/draw-circle.html
+$dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/draw-line.html
+$dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/drawPolygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/draw-polygon.html
 $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/draw-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/drawSprite/#com.kollider.engine.ecs.rendering.SpriteAsset#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/draw-sprite.html
 $dokka.location:com.kollider.engine.ecs.rendering/AndroidRenderer/drawText/#kotlin.String#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-android-renderer/draw-text.html
@@ -281,6 +283,22 @@ $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/Composite/#
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/elements/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/elements.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/offsetX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/offset-x.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Composite/offsetY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-composite/offset-y.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/index.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/Line/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/-line.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/color/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/color.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/endX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/end-x.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/endY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/end-y.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/offsetX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/offset-x.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/offsetY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/offset-y.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/startX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/start-x.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/startY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/start-y.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Line/thickness/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-line/thickness.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Polygon///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-polygon/index.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Polygon/Polygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-polygon/-polygon.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Polygon/color/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-polygon/color.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Polygon/offsetX/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-polygon/offset-x.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Polygon/offsetY/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-polygon/offset-y.html
+$dokka.location:com.kollider.engine.ecs.rendering/Drawable.Polygon/points/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-polygon/points.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Rect///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-rect/index.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Rect/Rect/#kotlin.Float#kotlin.Float#kotlin.Int#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-rect/-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Rect/bottom/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-rect/bottom.html
@@ -317,6 +335,8 @@ $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/IosRenderer/#/Poin
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/clear.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-circle.html
+$dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-line.html
+$dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawPolygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-polygon.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawSprite/#com.kollider.engine.ecs.rendering.SpriteAsset#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-sprite.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawText/#kotlin.String#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-text.html
@@ -332,6 +352,8 @@ $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/JsRenderer/#/Pointi
 $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/clear.html
 $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/draw-circle.html
+$dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/draw-line.html
+$dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/drawPolygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/draw-polygon.html
 $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/draw-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/drawSprite/#com.kollider.engine.ecs.rendering.SpriteAsset#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/draw-sprite.html
 $dokka.location:com.kollider.engine.ecs.rendering/JsRenderer/drawText/#kotlin.String#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-js-renderer/draw-text.html
@@ -348,6 +370,8 @@ $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/JvmRenderer/#com.k
 $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/clear.html
 $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/draw-circle.html
+$dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/draw-line.html
+$dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/drawPolygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/draw-polygon.html
 $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/draw-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/drawSprite/#com.kollider.engine.ecs.rendering.SpriteAsset#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/draw-sprite.html
 $dokka.location:com.kollider.engine.ecs.rendering/JvmRenderer/drawText/#kotlin.String#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-jvm-renderer/draw-text.html
@@ -363,6 +387,8 @@ $dokka.location:com.kollider.engine.ecs.rendering/Renderer///PointingToDeclarati
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/clear.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/draw-circle.html
+$dokka.location:com.kollider.engine.ecs.rendering/Renderer/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/draw-line.html
+$dokka.location:com.kollider.engine.ecs.rendering/Renderer/drawPolygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/draw-polygon.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/draw-rect.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/drawSprite/#com.kollider.engine.ecs.rendering.SpriteAsset#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/draw-sprite.html
 $dokka.location:com.kollider.engine.ecs.rendering/Renderer/drawText/#kotlin.String#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-renderer/draw-text.html

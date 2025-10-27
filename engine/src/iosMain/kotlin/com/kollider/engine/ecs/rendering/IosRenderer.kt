@@ -1,6 +1,7 @@
 package com.kollider.engine.ecs.rendering
 
 import com.kollider.engine.ecs.input.InputHandler
+import com.kollider.engine.ecs.physics.Vector2
 
 actual fun createRenderer(canvas: Canvas, inputHandler: InputHandler): Renderer {
     return IosRenderer()
@@ -44,5 +45,13 @@ class IosRenderer: Renderer {
 
     override fun drawCircle(x: Float, y: Float, radius: Float, color: Int) {
         // Draw the circle on iOS
+    }
+
+    override fun drawLine(x1: Float, y1: Float, x2: Float, y2: Float, thickness: Float, color: Int) {
+        // Draw the line on iOS
+    }
+
+    override fun drawPolygon(points: List<Vector2>, color: Int) {
+        // Draw the polygon on iOS
     }
 }
