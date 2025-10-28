@@ -2,7 +2,8 @@
 
 Kollider is a lightweight, Kotlin Multiplatform (KMP) engine for building 2D games that run on JVM (desktop), Android, iOS, and JavaScript. It wraps a clean Entity–Component–System (ECS) core with opinionated defaults for input, physics, collisions, rendering, asset loading, and scene management, so you can focus on gameplay instead of boilerplate.
 
-[Browse the full API reference generated with Dokka.](api/index.html)
+[Browse the full API reference generated with Dokka.](api/index.html) ·
+[Read the Kollider Cookbook](cookbook.md)
 
 ---
 
