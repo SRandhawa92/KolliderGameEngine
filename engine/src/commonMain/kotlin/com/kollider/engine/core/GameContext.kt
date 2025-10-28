@@ -1,5 +1,6 @@
 package com.kollider.engine.core
 
+import com.kollider.engine.core.storage.KeyValueStorage
 import com.kollider.engine.ecs.World
 
 /**
@@ -16,5 +17,6 @@ import com.kollider.engine.ecs.World
 data class GameContext(
     val config: GameConfig,
     val world: World,
-    val engine: GameEngine
+    val engine: GameEngine,
+    val storage: KeyValueStorage,
 )

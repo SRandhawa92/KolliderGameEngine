@@ -1,6 +1,7 @@
 package com.kollider.engine.core
 
 import com.kollider.engine.assets.AssetManager
+import com.kollider.engine.core.storage.KeyValueStorage
 import com.kollider.engine.ecs.input.InputRouter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,7 @@ data class GameConfig(
     val inputRouter: InputRouter = InputRouter(),
     var renderWidthOverride: Int? = null,
     var renderHeightOverride: Int? = null,
+    var storageFactory: ((GameConfig) -> KeyValueStorage)? = null,
 ) {
     /**
      * Width in pixels used by the renderer. Falls back to [width] when no override is provided.

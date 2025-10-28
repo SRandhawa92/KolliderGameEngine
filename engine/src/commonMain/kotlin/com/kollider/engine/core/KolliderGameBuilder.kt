@@ -1,5 +1,6 @@
 package com.kollider.engine.core
 
+import com.kollider.engine.core.storage.KeyValueStorage
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.input.InputHandler
@@ -162,6 +163,7 @@ class KolliderGameBuilder(
         val canvas = createCanvas(config)
         val renderer = createRenderer(canvas, inputHandler)
         val world = createWorld(inputHandler, renderer, config)
+        val storage = resolveStorage(config)
 
         // Apply entity registrations, each receiving the config.
         entityRegistrations.forEach { registration -> registration.invoke(world, config) }
@@ -170,11 +172,22 @@ class KolliderGameBuilder(
         customSystems.forEach { systemFactory -> world.addSystem(systemFactory(config)) }
 
         val engine = GameEngine(world, config.scope)
-        val context = GameContext(config, world, engine)
+        val context = GameContext(config, world, engine, storage)
         engine.attachContext(context)
         engine.start()
 
         val game = gameFactory(context)
         return GameHandle(context, game)
+    }
+
+    private fun resolveStorage(config: GameConfig): KeyValueStorage {
+        val factory = config.storageFactory ?: defaultStorageFactory
+        return factory(config)
+    }
+
+    companion object {
+        internal var defaultStorageFactory: (GameConfig) -> KeyValueStorage = { cfg ->
+            throw IllegalStateException("No KeyValueStorage factory configured for ${cfg}")
+        }
     }
 }
