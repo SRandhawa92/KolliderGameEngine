@@ -1,6 +1,7 @@
 package com.kollider.engine.core
 
 import com.kollider.engine.core.storage.KeyValueStorage
+import com.kollider.engine.core.storage.platformStorageFactory
 import com.kollider.engine.ecs.System
 import com.kollider.engine.ecs.World
 import com.kollider.engine.ecs.input.InputHandler
@@ -186,8 +187,6 @@ class KolliderGameBuilder(
     }
 
     companion object {
-        internal var defaultStorageFactory: (GameConfig) -> KeyValueStorage = { cfg ->
-            throw IllegalStateException("No KeyValueStorage factory configured for ${cfg}")
-        }
+        internal var defaultStorageFactory: (GameConfig) -> KeyValueStorage = platformStorageFactory()
     }
 }
