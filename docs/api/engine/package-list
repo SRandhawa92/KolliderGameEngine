@@ -18,6 +18,18 @@ $dokka.location:com.kollider.engine.assets/AssetState.Ready///PointingToDeclarat
 $dokka.location:com.kollider.engine.assets/AssetState.Ready/Ready/#TypeParam(bounds=[kotlin.Any?])/PointingToDeclaration/engine/com.kollider.engine.assets/-asset-state/-ready/-ready.html
 $dokka.location:com.kollider.engine.assets/AssetState.Ready/value/#/PointingToDeclaration/engine/com.kollider.engine.assets/-asset-state/-ready/value.html
 $dokka.location:com.kollider.engine.assets/AssetState///PointingToDeclaration/engine/com.kollider.engine.assets/-asset-state/index.html
+$dokka.location:com.kollider.engine.core.storage////PointingToDeclaration/engine/com.kollider.engine.core.storage/index.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage///PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/index.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/clear/#/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/clear.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/getBoolean/#kotlin.String#kotlin.Boolean/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/get-boolean.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/getFloat/#kotlin.String#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/get-float.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/getInt/#kotlin.String#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/get-int.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/getString/#kotlin.String#kotlin.String?/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/get-string.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/putBoolean/#kotlin.String#kotlin.Boolean/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/put-boolean.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/putFloat/#kotlin.String#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/put-float.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/putInt/#kotlin.String#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/put-int.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/putString/#kotlin.String#kotlin.String/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/put-string.html
+$dokka.location:com.kollider.engine.core.storage/KeyValueStorage/remove/#kotlin.String/PointingToDeclaration/engine/com.kollider.engine.core.storage/-key-value-storage/remove.html
 $dokka.location:com.kollider.engine.core////PointingToDeclaration/engine/com.kollider.engine.core/index.html
 $dokka.location:com.kollider.engine.core//createGameClock/#/PointingToDeclaration/engine/com.kollider.engine.core/create-game-clock.html
 $dokka.location:com.kollider.engine.core//createKolliderGame/#kotlin.Function1[com.kollider.engine.core.GameConfig,kotlin.Unit]/PointingToDeclaration/engine/com.kollider.engine.core/create-kollider-game.html
@@ -35,7 +47,7 @@ $dokka.location:com.kollider.engine.core/Game/Game/#com.kollider.engine.core.Gam
 $dokka.location:com.kollider.engine.core/GameClock///PointingToDeclaration/engine/com.kollider.engine.core/-game-clock/index.html
 $dokka.location:com.kollider.engine.core/GameClock/getNanoTime/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-clock/get-nano-time.html
 $dokka.location:com.kollider.engine.core/GameConfig///PointingToDeclaration/engine/com.kollider.engine.core/-game-config/index.html
-$dokka.location:com.kollider.engine.core/GameConfig/GameConfig/#kotlin.Int#kotlin.Int#kotlin.String#com.kollider.engine.core.AppContext#kotlinx.coroutines.CoroutineScope#com.kollider.engine.assets.AssetManager#com.kollider.engine.ecs.input.InputRouter#kotlin.Int?#kotlin.Int?/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/-game-config.html
+$dokka.location:com.kollider.engine.core/GameConfig/GameConfig/#kotlin.Int#kotlin.Int#kotlin.String#com.kollider.engine.core.AppContext#kotlinx.coroutines.CoroutineScope#com.kollider.engine.assets.AssetManager#com.kollider.engine.ecs.input.InputRouter#kotlin.Int?#kotlin.Int?#kotlin.Function1[com.kollider.engine.core.GameConfig,com.kollider.engine.core.storage.KeyValueStorage]?/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/-game-config.html
 $dokka.location:com.kollider.engine.core/GameConfig/appContext/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/app-context.html
 $dokka.location:com.kollider.engine.core/GameConfig/assets/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/assets.html
 $dokka.location:com.kollider.engine.core/GameConfig/height/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/height.html
@@ -45,13 +57,15 @@ $dokka.location:com.kollider.engine.core/GameConfig/renderHeightOverride/#/Point
 $dokka.location:com.kollider.engine.core/GameConfig/renderWidth/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/render-width.html
 $dokka.location:com.kollider.engine.core/GameConfig/renderWidthOverride/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/render-width-override.html
 $dokka.location:com.kollider.engine.core/GameConfig/scope/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/scope.html
+$dokka.location:com.kollider.engine.core/GameConfig/storageFactory/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/storage-factory.html
 $dokka.location:com.kollider.engine.core/GameConfig/title/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/title.html
 $dokka.location:com.kollider.engine.core/GameConfig/width/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/width.html
 $dokka.location:com.kollider.engine.core/GameConfig/worldBounds/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-config/world-bounds.html
 $dokka.location:com.kollider.engine.core/GameContext///PointingToDeclaration/engine/com.kollider.engine.core/-game-context/index.html
-$dokka.location:com.kollider.engine.core/GameContext/GameContext/#com.kollider.engine.core.GameConfig#com.kollider.engine.ecs.World#com.kollider.engine.core.GameEngine/PointingToDeclaration/engine/com.kollider.engine.core/-game-context/-game-context.html
+$dokka.location:com.kollider.engine.core/GameContext/GameContext/#com.kollider.engine.core.GameConfig#com.kollider.engine.ecs.World#com.kollider.engine.core.GameEngine#com.kollider.engine.core.storage.KeyValueStorage/PointingToDeclaration/engine/com.kollider.engine.core/-game-context/-game-context.html
 $dokka.location:com.kollider.engine.core/GameContext/config/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-context/config.html
 $dokka.location:com.kollider.engine.core/GameContext/engine/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-context/engine.html
+$dokka.location:com.kollider.engine.core/GameContext/storage/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-context/storage.html
 $dokka.location:com.kollider.engine.core/GameContext/world/#/PointingToDeclaration/engine/com.kollider.engine.core/-game-context/world.html
 $dokka.location:com.kollider.engine.core/GameEngine///PointingToDeclaration/engine/com.kollider.engine.core/-game-engine/index.html
 $dokka.location:com.kollider.engine.core/GameEngine/GameEngine/#com.kollider.engine.ecs.World#kotlinx.coroutines.CoroutineScope/PointingToDeclaration/engine/com.kollider.engine.core/-game-engine/-game-engine.html
@@ -82,6 +96,7 @@ $dokka.location:com.kollider.engine.core/JsGameClock/getNanoTime/#/PointingToDec
 $dokka.location:com.kollider.engine.core/JvmGameClock///PointingToDeclaration/engine/com.kollider.engine.core/-jvm-game-clock/index.html
 $dokka.location:com.kollider.engine.core/JvmGameClock/JvmGameClock/#/PointingToDeclaration/engine/com.kollider.engine.core/-jvm-game-clock/-jvm-game-clock.html
 $dokka.location:com.kollider.engine.core/JvmGameClock/getNanoTime/#/PointingToDeclaration/engine/com.kollider.engine.core/-jvm-game-clock/get-nano-time.html
+$dokka.location:com.kollider.engine.core/KolliderGameBuilder.Companion///PointingToDeclaration/engine/com.kollider.engine.core/-kollider-game-builder/-companion/index.html
 $dokka.location:com.kollider.engine.core/KolliderGameBuilder///PointingToDeclaration/engine/com.kollider.engine.core/-kollider-game-builder/index.html
 $dokka.location:com.kollider.engine.core/KolliderGameBuilder/KolliderGameBuilder/#com.kollider.engine.core.GameConfig/PointingToDeclaration/engine/com.kollider.engine.core/-kollider-game-builder/-kollider-game-builder.html
 $dokka.location:com.kollider.engine.core/KolliderGameBuilder/entities/#kotlin.Function1[com.kollider.engine.core.EntitiesBuilder,kotlin.Unit]/PointingToDeclaration/engine/com.kollider.engine.core/-kollider-game-builder/entities.html
@@ -447,6 +462,7 @@ $dokka.location:com.kollider.engine.ecs/World/update/#kotlin.Float/PointingToDec
 $dokka.location:com.kollider.engine.ecs/World/view/#kotlin.Array[kotlin.reflect.KClass[com.kollider.engine.ecs.Component]]/PointingToDeclaration/engine/com.kollider.engine.ecs/-world/view.html
 com.kollider.engine.assets
 com.kollider.engine.core
+com.kollider.engine.core.storage
 com.kollider.engine.ecs
 com.kollider.engine.ecs.input
 com.kollider.engine.ecs.physics

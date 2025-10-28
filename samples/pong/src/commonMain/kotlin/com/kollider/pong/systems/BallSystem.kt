@@ -1,6 +1,7 @@
 package com.kollider.pong.systems
 
 import com.kollider.engine.core.SceneScope
+import com.kollider.engine.core.storage.KeyValueStorage
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
@@ -12,10 +13,14 @@ import com.kollider.engine.ecs.physics.Velocity
 import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.engine.ecs.require
 import com.kollider.pong.components.BallComponent
+import com.kollider.pong.components.HighScoreComponent
 import com.kollider.pong.components.ScoreComponent
 import com.kollider.pong.prefabs.formatScoreText
+import com.kollider.pong.prefabs.updateHighScoreDrawable
 import kotlin.math.abs
 import kotlin.math.sqrt
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 fun SceneScope.ballSystem(
     worldLeft: Float,
@@ -28,13 +33,15 @@ fun SceneScope.ballSystem(
 ) {
     addSystem(
         BallSystem(
-            worldLeft,
-            worldTop,
-            worldRight,
-            worldBottom,
-            initialSpeed,
-            maxSpeed,
-            hitSpeedIncrement
+            worldLeft = worldLeft,
+            worldTop = worldTop,
+            worldRight = worldRight,
+            worldBottom = worldBottom,
+            initialSpeed = initialSpeed,
+            maxSpeed = maxSpeed,
+            hitSpeedIncrement = hitSpeedIncrement,
+            storage = context.storage,
+            coroutineScope = config.scope,
         )
     )
 }
@@ -54,10 +61,13 @@ class BallSystem(
     private val worldBottom: Float,
     private val initialSpeed: Float = 220f,
     private val maxSpeed: Float = 560f,
-    private val hitSpeedIncrement: Float = 12f
+    private val hitSpeedIncrement: Float = 12f,
+    private val storage: KeyValueStorage,
+    private val coroutineScope: CoroutineScope,
 ) : System() {
     private lateinit var ballView: EntityView
     private lateinit var scoreView: EntityView
+    private lateinit var highScoreView: EntityView
 
     // toggles to make serves deterministic without RNG
     private var serveRightNext = true
@@ -70,6 +80,7 @@ class BallSystem(
             Collider::class,
         )
         scoreView = world.view(ScoreComponent::class, Drawable::class)
+        highScoreView = world.view(HighScoreComponent::class, Drawable::class)
     }
 
     @Suppress("UNUSED_PARAMETER")
@@ -192,6 +203,25 @@ class BallSystem(
             if (drawable.text != text) {
                 scoreEntity.add(drawable.copy(text = text))
             }
+        }
+
+        if (playerScored) {
+            updateHighScore(score.player)
+        }
+    }
+
+    private fun updateHighScore(playerScore: Int) {
+        val iterator = highScoreView.iterator()
+        if (!iterator.hasNext()) return
+
+        val highScoreEntity = iterator.next()
+        val component = highScoreEntity.require<HighScoreComponent>()
+        if (playerScore <= component.best) return
+
+        component.best = playerScore
+        updateHighScoreDrawable(highScoreEntity, component.best)
+        coroutineScope.launch {
+            storage.putInt(component.storageKey, component.best)
         }
     }
 
