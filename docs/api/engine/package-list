@@ -132,6 +132,10 @@ $dokka.location:com.kollider.engine.ecs.input////PointingToDeclaration/engine/c
 $dokka.location:com.kollider.engine.ecs.input//createInputHandler/#com.kollider.engine.core.GameConfig/PointingToDeclaration/engine/com.kollider.engine.ecs.input/create-input-handler.html
 $dokka.location:com.kollider.engine.ecs.input/Action///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-action/index.html
 $dokka.location:com.kollider.engine.ecs.input/Action/name/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-action/name.html
+$dokka.location:com.kollider.engine.ecs.input/ActionRegistry///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-action-registry/index.html
+$dokka.location:com.kollider.engine.ecs.input/ActionRegistry/register/#com.kollider.engine.ecs.input.Action/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-action-registry/register.html
+$dokka.location:com.kollider.engine.ecs.input/ActionRegistry/reset/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-action-registry/reset.html
+$dokka.location:com.kollider.engine.ecs.input/ActionRegistry/resolve/#kotlin.String/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-action-registry/resolve.html
 $dokka.location:com.kollider.engine.ecs.input/AndroidInputHandler///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-android-input-handler/index.html
 $dokka.location:com.kollider.engine.ecs.input/AndroidInputHandler/AndroidInputHandler/#android.content.Context/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-android-input-handler/-android-input-handler.html
 $dokka.location:com.kollider.engine.ecs.input/AndroidInputHandler/clearActions/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-android-input-handler/clear-actions.html
@@ -184,9 +188,13 @@ $dokka.location:com.kollider.engine.ecs.input/InputSystem/runsWhilePaused/#/Poin
 $dokka.location:com.kollider.engine.ecs.input/InputSystem/update/#kotlin.collections.List[com.kollider.engine.ecs.Entity]#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-input-system/update.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/index.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler/IosInputHandler/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/-ios-input-handler.html
+$dokka.location:com.kollider.engine.ecs.input/IosInputHandler/clearAction/#kotlin.String/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/clear-action.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler/dispatcher/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/dispatcher.html
+$dokka.location:com.kollider.engine.ecs.input/IosInputHandler/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/dispose.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler/getMovement/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/get-movement.html
 $dokka.location:com.kollider.engine.ecs.input/IosInputHandler/isActionActive/#com.kollider.engine.ecs.input.Action/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/is-action-active.html
+$dokka.location:com.kollider.engine.ecs.input/IosInputHandler/setActionState/#kotlin.String#kotlin.Boolean#kotlin.Int?/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/set-action-state.html
+$dokka.location:com.kollider.engine.ecs.input/IosInputHandler/setMovement/#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-ios-input-handler/set-movement.html
 $dokka.location:com.kollider.engine.ecs.input/JsInputHandler///PointingToDeclaration/engine/com.kollider.engine.ecs.input/-js-input-handler/index.html
 $dokka.location:com.kollider.engine.ecs.input/JsInputHandler/JsInputHandler/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-js-input-handler/-js-input-handler.html
 $dokka.location:com.kollider.engine.ecs.input/JsInputHandler/dispatcher/#/PointingToDeclaration/engine/com.kollider.engine.ecs.input/-js-input-handler/dispatcher.html
@@ -341,12 +349,12 @@ $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Text/size/#/PointingT
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable.Text/text/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/-text/text.html
 $dokka.location:com.kollider.engine.ecs.rendering/Drawable///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-drawable/index.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosCanvas///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-canvas/index.html
-$dokka.location:com.kollider.engine.ecs.rendering/IosCanvas/IosCanvas/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-canvas/-ios-canvas.html
+$dokka.location:com.kollider.engine.ecs.rendering/IosCanvas/IosCanvas/#com.kollider.engine.ios.IosCanvasHost#com.kollider.engine.ios.IosCanvasSize/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-canvas/-ios-canvas.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosCanvas/canvasHeight/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-canvas/canvas-height.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosCanvas/canvasWidth/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-canvas/canvas-width.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosCanvas/paint/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-canvas/paint.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer///PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/index.html
-$dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/IosRenderer/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/-ios-renderer.html
+$dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/IosRenderer/#com.kollider.engine.ecs.rendering.IosCanvas#com.kollider.engine.ios.IosRenderDelegate/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/-ios-renderer.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/clear/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/clear.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/dispose.html
 $dokka.location:com.kollider.engine.ecs.rendering/IosRenderer/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ecs.rendering/-ios-renderer/draw-circle.html
@@ -460,6 +468,33 @@ $dokka.location:com.kollider.engine.ecs/World/resize/#kotlin.Int#kotlin.Int/Poin
 $dokka.location:com.kollider.engine.ecs/World/resume/#/PointingToDeclaration/engine/com.kollider.engine.ecs/-world/resume.html
 $dokka.location:com.kollider.engine.ecs/World/update/#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ecs/-world/update.html
 $dokka.location:com.kollider.engine.ecs/World/view/#kotlin.Array[kotlin.reflect.KClass[com.kollider.engine.ecs.Component]]/PointingToDeclaration/engine/com.kollider.engine.ecs/-world/view.html
+$dokka.location:com.kollider.engine.ios////PointingToDeclaration/engine/com.kollider.engine.ios/index.html
+$dokka.location:com.kollider.engine.ios/IosCanvasHost///PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-host/index.html
+$dokka.location:com.kollider.engine.ios/IosCanvasHost/currentSize/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-host/current-size.html
+$dokka.location:com.kollider.engine.ios/IosCanvasHost/onResize/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-host/on-resize.html
+$dokka.location:com.kollider.engine.ios/IosCanvasHost/requestRender/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-host/request-render.html
+$dokka.location:com.kollider.engine.ios/IosCanvasSize///PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-size/index.html
+$dokka.location:com.kollider.engine.ios/IosCanvasSize/IosCanvasSize/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-size/-ios-canvas-size.html
+$dokka.location:com.kollider.engine.ios/IosCanvasSize/height/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-size/height.html
+$dokka.location:com.kollider.engine.ios/IosCanvasSize/width/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-canvas-size/width.html
+$dokka.location:com.kollider.engine.ios/IosInputBridge///PointingToDeclaration/engine/com.kollider.engine.ios/-ios-input-bridge/index.html
+$dokka.location:com.kollider.engine.ios/IosInputBridge/clearAction/#kotlin.String/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-input-bridge/clear-action.html
+$dokka.location:com.kollider.engine.ios/IosInputBridge/setActionState/#kotlin.String#kotlin.Boolean#kotlin.Int?/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-input-bridge/set-action-state.html
+$dokka.location:com.kollider.engine.ios/IosInputBridge/setMovement/#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-input-bridge/set-movement.html
+$dokka.location:com.kollider.engine.ios/IosPlatform///PointingToDeclaration/engine/com.kollider.engine.ios/-ios-platform/index.html
+$dokka.location:com.kollider.engine.ios/IosPlatform/canvasHost/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-platform/canvas-host.html
+$dokka.location:com.kollider.engine.ios/IosPlatform/rendererDelegate/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-platform/renderer-delegate.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate///PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/index.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/clear/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/clear.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/dispose/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/dispose.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/drawCircle/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/draw-circle.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/drawLine/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/draw-line.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/drawPolygon/#kotlin.collections.List[com.kollider.engine.ecs.physics.Vector2]#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/draw-polygon.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/drawRect/#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/draw-rect.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/drawSprite/#platform.UIKit.UIImage#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Float/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/draw-sprite.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/drawText/#kotlin.String#kotlin.Float#kotlin.Float#kotlin.Float#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/draw-text.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/present/#/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/present.html
+$dokka.location:com.kollider.engine.ios/IosRenderDelegate/resize/#kotlin.Int#kotlin.Int/PointingToDeclaration/engine/com.kollider.engine.ios/-ios-render-delegate/resize.html
 com.kollider.engine.assets
 com.kollider.engine.core
 com.kollider.engine.core.storage
@@ -467,4 +502,5 @@ com.kollider.engine.ecs
 com.kollider.engine.ecs.input
 com.kollider.engine.ecs.physics
 com.kollider.engine.ecs.rendering
+com.kollider.engine.ios
 
