@@ -6,6 +6,7 @@ import com.kollider.flappybird.FlappyBirdGameState
 import com.kollider.flappybird.prefabs.background
 import com.kollider.flappybird.prefabs.bird
 import com.kollider.flappybird.prefabs.scoreboard
+import com.kollider.flappybird.systems.birdAnimationSystem
 import com.kollider.flappybird.systems.birdSystem
 import com.kollider.flappybird.systems.cloudSystem
 import com.kollider.flappybird.systems.obstacleSystem
@@ -25,6 +26,7 @@ fun SceneScope.gameLevel(
     )
     scoreboard(config = config)
     bird(config = config)
+    birdAnimationSystem(state = state)
     birdSystem(jumpSpeed = -50f, gravity = 50f, config = config, state = state)
     obstacleSystem(
         speed = -100f,
