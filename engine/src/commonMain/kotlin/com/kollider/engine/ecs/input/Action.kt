@@ -12,5 +12,18 @@ interface Action {
 /**
  * Built-in actions used by the sample games. Create your own to extend the input map.
  */
-object Shoot : Action { override val name = "Shoot" }
-object Pause : Action { override val name = "Pause" }
+object Shoot : Action {
+    override val name = "Shoot"
+
+    init {
+        ActionRegistry.register(this)
+    }
+}
+
+object Pause : Action {
+    override val name = "Pause"
+
+    init {
+        ActionRegistry.register(this)
+    }
+}
