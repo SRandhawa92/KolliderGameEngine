@@ -1,6 +1,7 @@
 package com.kollider.flappybird.systems
 
 import com.kollider.engine.core.SceneScope
+import com.kollider.engine.core.storage.KeyValueStorage
 import com.kollider.engine.ecs.Entity
 import com.kollider.engine.ecs.EntityView
 import com.kollider.engine.ecs.System
@@ -11,20 +12,27 @@ import com.kollider.engine.ecs.rendering.Drawable
 import com.kollider.engine.ecs.require
 import com.kollider.flappybird.FlappyBirdGameState
 import com.kollider.flappybird.components.BirdComponent
+import com.kollider.flappybird.components.HighScoreComponent
 import com.kollider.flappybird.components.ObstacleComponent
 import com.kollider.flappybird.components.ScoreComponent
 import com.kollider.flappybird.prefabs.formatScoreText
+import com.kollider.flappybird.prefabs.updateHighScoreDrawable
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 fun SceneScope.scoreSystem(state: FlappyBirdGameState) {
-    addSystem(ScoreSystem(state))
+    addSystem(ScoreSystem(state, context.storage, config.scope))
 }
 
 private class ScoreSystem(
     private val state: FlappyBirdGameState,
+    private val storage: KeyValueStorage,
+    private val coroutineScope: CoroutineScope,
 ) : System() {
     private lateinit var scoreView: EntityView
     private lateinit var obstacleView: EntityView
     private lateinit var birdView: EntityView
+    private lateinit var highScoreView: EntityView
 
     private val scoredObstacleIds = mutableSetOf<Int>()
     private var wasRunning = true
@@ -33,6 +41,7 @@ private class ScoreSystem(
         scoreView = world.view(ScoreComponent::class, Drawable::class)
         obstacleView = world.view(ObstacleComponent::class, Position::class, Collider::class)
         birdView = world.view(BirdComponent::class, Position::class)
+        highScoreView = world.view(HighScoreComponent::class, Drawable::class)
     }
 
     @Suppress("UNUSED_PARAMETER")
@@ -40,6 +49,7 @@ private class ScoreSystem(
         val running = state.isRunning
         if (!running) {
             if (wasRunning) {
+                finalizeScore()
                 resetScore()
             }
             wasRunning = false
@@ -79,6 +89,25 @@ private class ScoreSystem(
         }
 
         scoredObstacleIds.retainAll(activeObstacleIds)
+    }
+
+    private fun finalizeScore() {
+        val scoreIterator = scoreView.iterator()
+        if (!scoreIterator.hasNext()) return
+        val scoreValue = scoreIterator.next().require<ScoreComponent>().value
+        if (scoreValue <= 0) return
+
+        val highScoreIterator = highScoreView.iterator()
+        if (!highScoreIterator.hasNext()) return
+        val highScoreEntity = highScoreIterator.next()
+        val highScoreComponent = highScoreEntity.require<HighScoreComponent>()
+        if (scoreValue <= highScoreComponent.best) return
+
+        highScoreComponent.best = scoreValue
+        updateHighScoreDrawable(highScoreEntity, scoreValue)
+        coroutineScope.launch {
+            storage.putInt(highScoreComponent.storageKey, scoreValue)
+        }
     }
 
     private fun resetScore() {
